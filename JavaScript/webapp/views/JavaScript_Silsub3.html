@@ -43,7 +43,7 @@
                <input type="text" name="userid" id="userid" /><br>
                <label for="pass">* 비밀번호</label>
                <input type="password" name="pass" id="pass" /><br>
-               <label for="pass1">* 확인</label>
+               <label for="pass1">* 비밀번호 확인</label>
                <input type="password" name="pass1" id="pass1" /><br>
                <label for="name">* 이름</label>
                <input type="text" name="name" id="name" /><br>
@@ -256,18 +256,39 @@
 
                     // 비밀번호 체크 
                     // 정규식 /^[A-Za-z0-9_-]{6,18}$/
-                    let pwdChk1, pwdChk2 = /^[A-Za-z0-9_-]{6,18}$/;
-                    chk(pwdChk1, pass, "비밀번호 조건이 잘 못 되었습니다.");
-                    chk(pwdChk2, pass1, "밀번호 조건이 잘 못 되었습니다.");
-
-                    // if(pass.value != pass1.value){
-                    //     alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
-                    //     pass.value = "";
-                    //     pass1.value = "";
-                    //     pass.focus();
-                    //     return false;
-                    // }
+                    let pwdChk = /^[A-Za-z0-9]{6,18}$/;
+                    if(!chk(pwdChk, pass, "비밀번호 조건이 잘 못 되었습니다.")){
+                        return false;
+                    }
+                    // 비밀번호 와 비밀번호 확인이 일치 하는지 확인
+                    if(pass.value != pass1.value){
+                        alert("비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+                        pass.value = "";
+                        pass1.value = "";
+                        pass.focus();
+                        return false;
+                    }
                     
+                    // 전화번호 검사
+                    let phoneChk1 = /\d{3}$/;
+                    let phoneChk2 = /\d{3,4}$/;
+                    let phoneChk3 = /\d{4}$/;
+                    if(!chk(phoneChk1, tel1, "전화번호가 잘못 되었습니다.") 
+                    || !chk(phoneChk2, tel2, "전화번호가 잘못 되었습니다.") 
+                    || !chk(phoneChk3, tel3, "전화번호가 잘못 되었습니다.")){
+                        return false;
+                    }
+
+                    // 이메일 검사
+                    // 정규식은 인터넷 참조하여 수정
+                    let emailChk = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,6}$/;
+                    if(!chk(emailChk,email,"이메일 형식이 틀렸습니다.")){
+                        return false;
+                    }
+
+
+
+
                     // 정규식과 비교하고 true 나 false 로 반환 해주는 내부 함수
                     // 매개변수로는 re: 정규식 , e : 비교값(여기서는 입력값) , msg: 비교하여 일치하지 않을 경우 출력할 문자열
                     function chk(re, e, msg) {
@@ -302,5 +323,8 @@
                 }
             }
             </script>
+
+            <br><br>
+            <a href="../index.html">홈으로</a>
 </body>
 </html>
