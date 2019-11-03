@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트 내장 함수</title>
+    <style>
+        div {
+            width: 700px;
+            height: 300px;
+            background: ivory;
+            border: 3px solid blue;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트 내장 함수</h1>
+
+    <h3>인코딩과 디코딩</h3>
+    <p>
+        escape() : 영문, 숫자, 일부 특수문자를 제외하고 모두 인코딩하는 함수() <br>
+        escodeURIComponent() : 알파벳과 숫자를 제외한 모든 문자를 인코딩한다. <br>
+        ------------------------------------------------------------ <br>
+        unescape() : 인코드된 문자열을 다시 원상태로 돌리는 함수 <br>
+        decodeURIComponent() : 인코딩된 컴포넌트를 다시 원상태로 돌린다.
+    </p>
+
+    <button onclick="test1();">실행 확인</button>
+
+    <div id="div1"></div>
+
+    <!-- QueryString : 해당하는 웹 문서에서 전송받은 데이터
+    ?key=value&key2=value2 ... () ( GET 방식에서 사용 ) -->
+
+    <script>
+        const test1 = () => { 
+        var uri = "http://www.naver.com?keyword='홍길동'";
+        var d1 = document.getElementById('div1');
+        var esURI = escape(uri);
+        var enURI = encodeURIComponent(uri);
+        d1.innerHTML += "escape() : " + escape(uri) + "<br>";
+        d1.innerHTML += "encodeURIComponent() : " + encodeURIComponent(uri) + "<br>" ;
+        d1.innerHTML += "---------------------------------------------------- <br>";
+        d1.innerHTML += "unescape() : " + unescape(esURI) + "<br>";
+        d1.innerHTML += "decodeURIComponent() : " + decodeURIComponent(enURI) + "<br>";
+        };
+    </script>
+
+    <hr>
+
+    <h3>eval() 함수</h3>
+    <p>내부의 문자열을 JS 코드로 변환하여 실행하는 함수</p>
+
+    숫자1 : <input type="number" name="" id="num1"> <br>
+    숫자2 : <input type="number" name="" id="num2"> <br>
+
+    <button onclick="test2();">실행 확인</button>
+    <div id="div2"></div>
+
+    <script>
+        const test2 = () => { var plainText; // 암호화든, 인코딩등을 처리하지 않은 순수한 문자열
+        // 어떠한 값을 전달할 때 value로 받아 전ㅇ달하면 자동으로 문자열이 된다.
+        // 따라서 숫자를 전달할 때에는 Number() / parseInt() / parseFloat()
+        // 같은 형변환 함수를 사용해야 한다.
+        // var num1 = Number(document.getElementById('num1').value);
+        // var num2 = Number(document.getElementById('num2').value);
+
+        // var sum = num1 + num2;
+        plainText = "var num1 = Number(document.getElementById('num1').value);";
+        plainText += "var num2 = Number(document.getElementById('num2').value);";
+        plainText += "var sum = num1 + num2;";
+        
+        eval(plainText);
+
+        console.log(sum);
+        console.log(plainText);
+
+        };
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS 우선순위</title>
+    
+        <style>
+        /* 우선순위 테승트 */
+        *{
+            background: palegreen !important;
+        }
+
+        #test1{
+            background: palevioletred;
+        }
+        #test2{
+            background: plum;
+        }
+
+        .cls1{
+            background: blue;
+        }
+
+        div{
+            width: 300px; height: 300px; background: lightgoldenrodyellow;
+        }
+        p{
+            background: lightcoral;
+            color: darkslategrey;
+        }
+
+        </style>
+    </head>
+    <body>
+        <h1>CSS 우선순위</h1>
+        <p>CSS에서는 기본적으로 위에서 아래로 적용한다. <br>
+           만약 같은 태그에 속성이 여러번 적용될 경우 가장 마지막의 <br>
+           설정이 적용된다. <br>
+           단, CSS기준의 우선순위가 존재할 경우 <br>
+           해당 우선순위를 선적용한다.</p>
+
+        <pre>
+            < : &lt;
+            > : &gt;
+            전체 선택자(*) &lt; 태그 선택자 &lt; 클래스 선택자 &lt; id선택자 &lt; 인라인 선택자 &lt; !important
+        </pre>
+        
+        <hr>
+        
+        <h2>우선순위 테스트</h2>
+
+        <div id="test1" class="cls1" style="background:mintcream; color: black;">
+            우선순위 테스트1 입니다.
+
+        </div>
+
+        <p id="test2" class="cls1" style="background: olivedrab; color: purple;">
+            우선순위 테스트2 입니다.
+        </p>
+
+        <br>
+        <br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

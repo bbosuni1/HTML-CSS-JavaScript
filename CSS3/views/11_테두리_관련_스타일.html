@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>테두리 관련 스타일</title>
+        <style>
+            .div-common{
+                width: 100px;
+                height: 100px;
+                border-width: 3px;
+            }
+            #border-test1{
+                border-style : hidden;
+                box-shadow : 5px 5px 3px gray;
+            }
+            #border-test2{
+                border-style: dotted;
+            }
+            #border-test3{
+                border-style: dashed;
+                border-top-color: tomato;
+            }
+            #border-test4{
+                border-style: solid;
+            }
+            #border-test5{
+                border-style: double;
+                border-color: green;
+            }
+            #border-test6{
+                border-style: inset;
+                border-top-right-radius: 50px;
+            }
+            #border-test7{
+                border-style: outset;
+                border-top-left-radius: 50px;
+                border-bottom-right-radius : 50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>테두리 관련 스타일</h1>
+        <pre>{border-style: none | hidden | solid ...}</pre>
+
+        <h3>border-style : hidden &amp;  <br>
+            box-shadow : 5px 5px 3px gray </h3>
+
+        <div class="div-common" id="border-test1"></div>
+        
+        <h3>border-style : dotted</h3>
+        <div class="div-common" id="border-test2"></div>
+
+        <h3>border-style : dashed &amp; border-top-color : tomato</h3>
+        <div class="div-common" id="border-test3"></div>
+
+        <h3>border-style : solid</h3>
+        <div class="div-common" id="border-test4"></div>
+        
+        <h3>border-style : double &amp; border-color : green</h3>
+        <div class="div-common" id="border-test5"></div>
+
+        <h3>border-style : outset &amp; border-top-right-radius: 50px</h3>
+        <div class="div-common" id="border-test6"></div>
+
+        <h3>border-style : inset &amp; border-top-left-radius: 50px &amp; border-bottom-right-radius : 50px</h3>
+        <div class="div-common" id="border-test7"></div>
+        
+
+        <br><br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

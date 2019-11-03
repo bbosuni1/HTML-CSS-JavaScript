@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS 기본 선택자2</title>
+        <style>
+            /* 속성 선택자 */
+            div[name=name1]{
+                background: black;
+            }
+            div[name~=name2]{
+                background: khaki;
+            }
+            div[name^=n]{
+                background: violet;
+            }
+            div[class$=s]{
+                background: tomato;
+            }
+            div[class*='-']{
+                background: yellowgreen;
+            }
+            /* 자손 선택자 */
+            #parent>h4{
+                background: aqua;
+            }
+            #parent>#child3>li{
+                background: black;
+            }
+
+            /* 후손 선택자 */
+            #parent h4{
+                color: red;
+            }
+            #parent li{
+                color: yellowgreen;
+            }
+            
+            /* 동위 선택자 */
+            div{
+                border: 1px solid;
+            }
+            #divTest1{
+                background:  orange;
+            }
+            #divTest1+div{
+                background: palegreen;
+            }
+            /*
+            #divTest2~div{
+                background: brown;
+            }
+            */
+
+            /* 반응 선택자 */
+            #activeTest:active{
+                background: green;
+                color: lemonchiffon;
+            }
+            #hoverTest:hover{
+                background: lightgoldenrodyellow;
+                color: navy;
+            }
+
+            /* 상태 선택자 */
+            input[type=checkbox]:checked{
+                width: 20px;
+                height: 20px;
+            }
+
+            /* focus */
+            #userId:focus, #userPwd:focus{
+                border: 3px solid chocolate;
+                background: lightgoldenrodyellow;
+            }
+
+            /* 사용 가능 여부 */
+            option:disabled{
+                background: lightcoral;
+                color: darkgray;
+            }
+            option:enabled{
+                background: lightgreen;
+                color: cornflowerblue;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <h1>CSS 기본 선택자2</h1>
+
+        <hr>
+
+        <h2>속성 선택자</h2>
+        <p>
+            기본 선택자 뒤에 []를 붙여 <br>
+            특정 속성을 가진 태그들만 선택하는 방법.
+        </p>
+        <pre>
+            기본 형식 -> 선택자[속성=속성값] { . . .}
+            =   :   속성값과 같은 속성값을 가질 때
+            ~=  :   특정 단어를 속성값으로 가질 때
+            ^=  :   속성값이 특정 단어로 시작할 때
+            $=  :   속성값이 특정 단어로 끝날 때
+            *=  :   속성값이 특정 단어를 포함할 때
+        </pre>
+
+        <div style="border: 1px solid black; width: 100px; height: 100px;" name="name1" class="div-class"> div1 </div>
+        <div name="name2" class="div-class"> div2 </div>
+        <div name="name3" class="div-class"> div3 </div>
+        <div name="name4" class="div-class"> div4 </div>
+        <div name="name5" class="div-class"> div5 </div>
+
+        <hr>
+
+        <h2>자손 선택자와 후손 선택자</h2>
+        <p>
+            자손 선택자 : 바로 안에 있는 태그 <br>
+            후손 선택자 : 안에 존재하는 모든 태그들
+        </p>
+        <pre>
+            자손 선택자 : 부모선택자>자손선택자 { . . .}
+            후손 선택자 : 부모선택자 자손선택자 { . . .}
+        </pre>
+
+        <div id="parent"><!-- 부모 -->
+            <h4>나는 자손1 입니다.</h4><!-- 자손 -->
+            <h4>나는 자손2 입니다.</h4><!-- 자손 -->
+            <ul id="child3">나는 자식 있는 자손3 입니다.<!-- 자식 있는 자손 -->
+                <li>나는 ul의 자손임과 동시에 div의 후손1 입니다.</li><!-- 후손 -->
+                <li>나는 ul의 자손임과 동시에 div의 후손2 입니다.</li>
+                <li>나는 ul의 자손임과 동시에 div의 후손3 입니다.</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2>동위 선택자</h2>        
+        <p>동급 관계에 있는, 즉 한 부모 아래 같이 있는 태그들 끼리 선택하는 방법</p>
+        <pre>
+            선택자A+선택자B {. . .} : A요소 바로 뒤의 B요소를 선택함
+            선택자A~선택자B {. . .} : A요소 뒤의 모든 B요소를 선택함
+        </pre>
+
+        <div id="divTest1">DIV - TEST1</div>
+        <div id="divTest2">DIV - TEST2</div>
+        <div id="divTest3">DIV - TEST3</div>
+        <div id="divTest4">DIV - TEST4</div>
+        <div id="divTest5">DIV - TEST5</div>
+
+        <hr>
+
+        <h2>반응 선택자</h2>
+        <p>사용자가 움직임(마우스,키보드 입력)을 보일 때, <br>
+        해당 움직임에 따라 스타일이 변하게 하는 것</p>
+        <pre>
+            선택자:active{ . . .} 사용자가 마우스로 클릭했을 때
+            선택자:hover{ . . .} 마우스 커서가 해당 요소 위에 올라 갔을 때
+        </pre>
+
+            <div style="border: 1px solid; width: 100px; height: 100px;" id="activeTest">active 테스트 입니다.</div>
+            <div style="border: 1px solid; width: 100px; height: 100px;" id="hoverTest">hover 테스트 입니다.</div>
+        
+
+        <hr>
+
+        <h2>상태 선택자</h2>
+        <p>input 태그의 입력 양식에 따라
+            변화하는 스타일을 적용할 때 사용
+        </p>
+
+        <div style="width: 200px; height: 200px; text-align: center; 
+                    margin-left: auto; margin-right: auto;">
+            <input type="checkbox" name="streetfood" id="hoppang">
+            <label for="hoppang">호빵</label>
+            <input type="checkbox" name="streetfood" id="hotuck">
+            <label for="hotuck">호떡</label>
+            <input type="checkbox" name="streetfood" id="fishcake">
+            <label for="fishcake">어묵</label>
+        </div>
+
+        <br>
+        <p>focus(초점)가 맞춰진 상태인지 확인하여 스타일을 적용할 수도 있다.</p>
+        
+        <label for="userId">아이디 : </label><input type="text" name="userId" id="userId" placeholder="ID를 입력하세염">
+
+        <br>
+        <label for="userPwd">비밀번호 : </label><input type="password" name="userPwd" id="userPwd" placeholder="비밀번호를 입력하셈">
+
+        <br>
+
+        <p>사용 가능 여부에 따른 스타일 적용</p>
+        
+        아이스링크 입장 가능 나이(20~ 50) :
+        <select name="" id="">
+            <option value="10" disabled>10대</option>
+            <option value="20">20대</option>
+            <option value="30">30대</option>
+            <option value="40">40대</option>
+            <option value="50">50대</option>
+            <option value="60" disabled>60대</option>
+            <option value="70" disabled>70대</option>
+        </select>
+
+        <br>
+        <br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

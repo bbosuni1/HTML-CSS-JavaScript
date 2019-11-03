@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>객체 관련 키워드</title>
+    <style>
+        .area {
+            width: 500px;
+            height: auto;
+            padding: 10px;
+            border: 3px solid purple;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체 관련 키워드</h1>
+    <hr>
+    <h3>JS 생성자 사용하기</h3>
+    <P>
+        JS 에서도 new 키워드를 사용하여 객체를 생성할 수 있다.
+    </P>
+
+    <button onclick="test1();">실행 확인</button>
+    <div class="area" id="area1"></div>
+
+    <script>
+        // 자바 스크립트 생성자
+        function Monster(name, origin, age, height, bmi){
+            // 1. 필드 변수 만들기
+            this.name = name;
+            this.origin = origin;
+            this.age = age;
+            this.height = height;
+            this.bmi = bmi;
+
+            // 2. 클로져를 사용한 getter&setter
+            this.getName = function(){return "나의 이름은 : " + this.name;}      
+            this.toString = function(){return "괴물 정보 [ 이름 : " + this.name 
+                                                + ", 나이 : " + this.age 
+                                                + ", 출신지 : " + this.origin
+                                                + ", 키 : " + this.height
+                                                + ", BMI 지수 : " + this.bmi + "]"
+                                                };
+        }
+        
+        var monsterInc = [];
+
+        function test1(){
+            var meyMonster = new Monster(
+                prompt("이름은?"),
+                prompt("출신지는?"),
+                parseInt(prompt("나이는?")),
+                parseFloat(prompt("신장은?")),
+                parseFloat(prompt("bmi지수는?"))
+            );
+            var a1 = document.getElementById('area1');
+            a1.innerHTML += meyMonster.toString() + "<br>";
+            
+            monsterInc.push(meyMonster);
+            console.log(monsterInc);
+        }
+    </script>
+
+    <h3>instanceof 키워드</h3>
+    <p>A instanceof B : A는 B의 한 종류이다.</p>
+    <button onclick="test2();">실행 확인</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+        function Tiger(name){
+            this.name = name;
+        }
+        function Lion(name){
+            this.name = name;
+        }
+        function test2(){
+            var myTiger =  new Tiger("호식이");
+            var myLion = new Lion("근이");
+            
+            var a2 = document.getElementById('area2');
+
+            a2.innerHTML += "myTiger instanceof Tiger : " + (myTiger instanceof Tiger) + "<br>";
+            a2.innerHTML += "myTiger instanceof Lion : " + (myTiger instanceof Lion) + "<br>";
+            a2.innerHTML += "myTiger instanceof Object : " + (myTiger instanceof Object) + "<br>";
+            a2.innerHTML += "myTiger instanceof String : " + (myTiger instanceof String) + "<br>";
+            a2.innerHTML += "myTiger의 이름은 : " + myTiger.name + "<br>";
+            a2.innerHTML += "myLion의 이름은 : " + myLion['name'] + "<br>";
+        }
+    </script>
+
+    <hr>
+
+    <h3>캡슐화와 상속</h3>
+    <h3>캡슐화</h3>
+    <p>객체 안의 변수를 밖으로 표출하지 않겠다. (값만 보여주겠다)</p>
+
+    <button onclick="test3();">실행 확인</button>
+    <div class="area" id="area3"></div>
+
+    <script>
+        function Product(pname, pbrand, pprice){
+            // 1. 필드 변수 만들기 (캡슐화) --> 해당 스크립트 밖에서 호출할 수 없기 때문에
+            var name = pname;
+            var brand = pbrand;
+            var price = pprice;
+
+            // 2. 클로져를 활용한 getter와 setter를 구현
+            this.getName = function(){ return name;}
+            this.getBrand = function(){ return brand;}
+            this.getPrice = function(){ return price;}
+
+            this.setName = function(pname){ 
+                if(pname == "" || pname == null){ throw "이름을 입력해 주세요.";} // throw = 빨간 줄을 뜨게 한다.
+                else name = pname;
+                }
+            this.setBrand = function(pbrand){ 
+                if(pbrand == "" || pbrand == null){ throw "브랜드를 입력해 주세요.";}
+                else brand = pbrand;
+                }
+            this.setPrice = function(pprice){ 
+                alert("가격은 바꿀 수 없습니다.");
+                }
+        }
+
+        function test3(){
+            var productName = prompt("제품 명 : ");
+            var productBrand = prompt("제품 브랜드 : ");
+            var productPrice = Number(prompt("제품 가격 : "));
+
+            var product = new Product(productName, productBrand, productPrice);
+
+            console.log(product);
+            console.log(product.getName());
+
+            product.setName(prompt("변경할 이름은? : "));
+
+            console.log(product.getName());
+
+            product.setPrice(1000);
+
+            console.log(product.getPrice());
+
+            var a3 = document.getElementById('area3');
+
+            with(product) { // 하나의 객체에서 여려 개의 메소드나 변수를 재사용할 때 사용한다. with("객체명"){}
+            a3.innerHTML += "제품 명 : " + getName() +"<br>"+ " 브랜드 명 : " + getBrand()
+            +"<br>"+ " 제품 가격 : " + getPrice() +"<br>";
+            }
+        }
+    </script>
+
+    <h3>상속</h3>
+    <p>하나의 객체를 만들 때 직접 모든 내용을 만드는 것이 아니라 <br>
+    부모로 부터 존재하는 값을 가지고 시작할 수 있도록 코드를 재사용하는 기술을 말한다.</p>
+
+    <button onclick="test4();">실행 확인</button>
+    <script>
+        function Book(t, p, a , d){
+            // 1. 필드 변수
+            var title = t;
+            var price = p;
+            var author = a;
+            var disRate = d;
+            // 2. getter & setter
+            this.getTitle = () => { return title;}
+            this.getPrice = () => { return price;}
+            this.getAuthor = () => { return author;}
+            this.getDisRate = () => { return disRate;}
+
+            this.setTitle = (t) => {title = t;}
+            this.setPrice = (p) => {
+                if(p < 1 ) throw "0보다 큰 값을 입력하세요."
+                else price = p;}
+            this.setAuthor = (a) => {author = a;}
+            this.setDisRate = (d) => {
+                if(d < 1 ) throw "0보다 큰 값을 입력하세요."
+                else disRate = d;}
+        }
+        // 생성자의 내용을 중간에 변경할 수도 있다.
+        // 객체명.prototype.함수명 | 변수명 등을 통해 내용을
+        // 추가, 수정할 수 있다.
+        Book.prototype.getSellPrice = function(){
+            return this.getPrice() * (1 - this.getDisRate());
+        }
+
+        function test4(){
+            var myBook = new Book('자바로 그림 그리기', 50000, '그늬', 0.05);
+
+            alert("Title : " + myBook.getTitle() +"\n"+ "Author : " + myBook.getAuthor()
+            +"\n"+ "SellPrice : " + myBook.getSellPrice());
+        }
+
+    </script>
+
+    <h3>상속받은 자식 만들기</h3>
+    <button onclick="test5();">실행 확인</button>
+    <script>
+        function Novel(t,p,a,d,g){
+            // 상속을 위한 부모 설정
+            this.parent = Book; 
+
+            // 부모의 생성자 호출
+            this.parent(t,p,a,d);
+
+            // 자신의 필드 선언
+            var genre = g;
+
+            this.getGenre = () => { return genre;}
+            this.setGenre = (g) => { genre = g; }
+        }
+        // 부모가 변경시 자식도 변경 되기 위하여 연결
+        Novel.prototype = Book.prototype;
+
+        function test5(){
+            var novel1 = new Novel('어린왕자',10000, '생택쥐페리', 0.1 , '소설');
+            alert('title : ' + novel1.getTitle() + "\n"
+            + "author : " + novel1.getAuthor() + "\n"
+            + "genre : " + novel1.getGenre() + "\n"
+            + "sellPrice : " + novel1.getSellPrice() + "원");
+        }
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

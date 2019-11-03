@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>String과 Math 제공 요소</title>
+        <style>
+            .area{
+                width: 500px;
+                height: 400px;
+                border: 1px solid black;
+                padding: 5px;
+                background: lightcyan;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>String과 Math 제공 요소</h1>
+
+        <h3>String 기본 제공 요소</h3>
+        <p>
+            JS에서 문자열은 "", '' 안에 묶여있는 값을 문자열로 구분한다. <br>            
+        </p>
+
+        <button type="button" onclick="test1();">문자열 처리 함수</button>
+
+        <div id="area1" class="area"></div>
+
+        <script>
+            function test1(){
+                var el = document.getElementById('area1');
+                var str = "Apple Banana Cherry";
+
+                // 대소문자 변경 함수 사용하기
+                el.innerHTML = "toUpperCase() : " + str.toUpperCase() + "<br>";
+                el.innerHTML += "toLowerCase() : " + str.toLowerCase() + "<br>";
+
+                el.innerHTML += "length : " + str.length + "<br>";
+
+                // indexOf() / lastindexOf() : 특정 문자 위치 가져오기
+                el.innerHTML += "indexOf('e') : " + str.indexOf('e') + "<br>";
+                el.innerHTML += "lastinexOf('e') : " + str.lastIndexOf('e') + "<br>";
+                
+                // 문자열에서 문자 하나 꺼내기
+                for(var i = 0 ; i < 5 ; i++){
+                el.innerHTML += i + "번째 인덱스 : " + str.charAt(i) + "<br>";
+                };
+                // 문자열의 일부만 출력하기
+                el.innerHTML += "문자열 일부만 출력하기 : " + str.substring(6, 12) + "<br>";
+        
+                var cartoon = "개구린왕눈이, 썬가드, 은하철도999, 짱구는 못말려, 다간, 캐릭캐릭 체인지";
+
+                var cartoons = cartoon.split(', ');
+
+                el.innerHTML += "split 결과 : " + cartoons;
+
+                console.log(cartoons);
+            }
+        </script>
+
+        <hr>
+
+        <h3>숫자 처리 함수 Math 객체</h3>
+
+        <button onclick="test2();">함수 확인하기</button>
+
+        <div id="area2" class="area"></div>
+
+        <script>
+            function test2(){
+                var num1 = 125.4;
+                var num2 = -500;
+                
+                var e2 = document.getElementById('area2');
+
+                e2.innerHTML = "절대갑1 확인하기 : " + Math.abs(num1) + "<br>";
+                e2.innerHTML += "절대갑2 확인하기 : " + Math.abs(num2) + "<br>";
+
+                e2.innerHTML += "난수(임의의 수) : " + Math.floor(Math.random() * 100) + "<br>";
+
+                e2.innerHTML += "반올림 : " + Math.round(num1) + "<br>";
+
+                e2.innerHTML += "올림 : " + Math.ceil(num1) + "<br>";
+
+                e2.innerHTML += "내림 : " + Math.floor(num1) + "<br>";
+
+            }
+        </script>
+
+        <br><br>
+        <a href="../index.html">홈으로</a>
+    </body>
+</html>

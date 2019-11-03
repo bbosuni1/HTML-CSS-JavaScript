@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트 배열</title>
+        <style>
+            .area{
+                width: 500px;
+                height: 150px;
+                border: 3px dashed gold;
+                background: lightgoldenrodyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>자바스크립트 배열</h1>
+
+        <h3>자바 스크립트 배열 : </h3>
+        <p>
+            자바에서는 배열을 선언할 때 특정 자료형만 선언하여 해당하는 <br>
+            값들만 받을 수 있었다. ( ex. int[] --> int값만 저장 가능 ) <br>
+            하지만, 자바 스크립트는 지정하지 않기 때문에, <br>
+            모든 자료형을 다 받을 수 있다. (자바의 컬렉션과 유사하다)
+        </p>
+
+        <button onclick="arrTest1();">확인</button>
+        <div id="area1" class="area"></div>
+
+        <script>
+            function arrTest1(){
+                var arr = ['콩나물국밥', '샐러드','계란','샌드위치','부대찌개'];
+
+                var div1 = document.getElementById('area1');
+                div1.innerHTML = arr;
+
+                console.log(arr);
+            }
+        </script>
+
+        <hr>
+
+        <h3>배열 선언</h3>
+        <P>배열을 선언할 때에는 new Array를 사용할 수도 있고, <br>
+            [] 를 사용할 수도 있다. 또한 배열 선언시엔 크기를 지정하거나 <br>
+            지정하지 않아도 된다. </P>
+        
+        <button onclick="arrTest2();">콘솔에서 확인</button>
+
+        <script>
+            function arrTest2(){
+                var arr1 = new Array();
+                var arr2 = new Array(3);
+
+                console.log(arr1);
+                console.log(arr2);
+
+                // 배열에 값 추가하기
+                arr1[0] = '귤';
+                arr1[1] = '전기장판';
+                arr1[2] = '손난로';
+                arr1[3] = '장갑';
+                arr1[4] = '롱패딩';
+
+                console.log(arr1);
+
+                arr2[0] = '붕어빵';
+                arr2[1] = '냉면';
+                arr2[2] = '군고구마';
+                arr2[3] = '돼지국밥';
+                arr2[4] = '꽃새우';
+
+                // 배열의 길이를 적은 숫자로 지정해도 값이 유동적으로 들어간다.
+                console.log(arr2);
+
+                // 선언과 동시에 초기화
+                var arr3 = new Array('HTML5', 'CSS3', 'JavaScript', 'jQuery');
+                
+                console.log(arr3);
+
+                // 배열 만들때 권장하는 형식은 아래와 같다.
+                var arr4 = ['HTML5', 'CSS3', 'JavaScript', 'jQuery'];
+
+                console.log(arr4);
+            }
+        </script>
+        
+        <hr>
+
+        <h3>Array 객체의 메소드(함수)</h3>
+        <p>Array도 하나의 객체이기 때문에 여러 종유의 함수를 가지고 있다.</p>
+
+        <h4>indexOf() : 배열의 특정 요소가 몇번째 인지 확인하는 함수</h4>
+        <button onclick="arrFn1();">확인하기</button>
+        <script>
+            function arrFn1(){
+                var array = ['케익', '발렌타인 30년산', '치킨', '깡소주', '피자'];
+
+                var search = window.prompt("찾고싶은 음식 입력");
+                console.log(search + "가 위치한 순번 : " + array.indexOf(search));
+            }
+        </script>
+
+        <h4>concat() : 두 개의 배열을 하나로 합치는 함수</h4>
+        
+        <button onclick="arrFn2();">확인하기</button>
+        <div class="area" id="area2"></div>
+        <script>
+            function arrFn2(){
+                var arr1 = ['노트북', '핸드폰', '이불', '후라이팬', '차'];
+                var arr2 = ['워커홀릭','기억이 나는 시간', '2002', '버터플라이', '자주색 비', '잘못된 만남'];
+                
+                var a2 = document.getElementById('area2');
+                a2.innerHTML = "arr1 : " + arr1 + "<br>";
+                a2.innerHTML += "arr2 : " + arr2 + "<br>";
+                a2.innerHTML += "arr1.concat(arr2) : " + arr1.concat(arr2);
+
+            }
+        </script>
+
+        <hr>
+
+        <h4>join() : 배열의 내용을 하나로 합치는 함수</h4>
+        <button onclick="arrFn3();">확인하기</button>
+        <div class="area" id="area3"></div>
+
+        <script>
+            function arrFn3(){
+                var arr = ['C','H','I','C','K','E','N'];
+                var arrToJoin = arr.join("-"); // join() 안의 값이 구분자가 되어 합쳐준다. 기본은 ,
+
+                var a3 = document.getElementById('area3');
+                a3.innerHTML = "arr : " + arr + "<br>";
+                a3.innerHTML += "arr.join() : " + arrToJoin + "<br>";
+                a3.innerHTML += "arr의 자료형 : " + typeof(arr) + "<br>";
+                a3.innerHTML += "join한 결과의 자료형 : " + typeof(arrToJoin)+ "<br>";
+            }
+        </script>
+
+        <hr>
+
+        <h4>reverse() : 배열의 순서를 거꾸로 뒤집는 함수</h4>
+        <button onclick="arrFn4();">확인하기</button>
+        <div class="area" id="area4"></div>
+
+        <script>
+            function arrFn4(){
+                var arr = ['가지', '파프리카', '번데기', '고수', '취두부', '굴'];
+
+                // reverse() 함수 사용하기
+                var a4 = document.getElementById('area4');
+                a4.innerHTML = "arr : " + arr +"<br>";
+                a4.innerHTML += "arr.reverse() : " + arr.reverse() + "<br>";
+                a4.innerHTML += "arr 원본 재확인 : " + arr + "<br>";
+                // reverse() 함수는 원본에도 영향을 미친다.
+            }
+        </script>
+
+        <hr>
+
+        <h4>sort() : 배열을 오름차순으로 정렬하는 함수</h4>
+        <button onclick="arrFn5();">확인하기</button>
+        <div class="area" id="area5"></div>
+
+        <script>
+            function arrFn5(){
+                var arr = [77,88,3,6,100];
+                var a5 = document.getElementById('area5');
+
+                a5.innerHTML = "arr : " + arr + "<br>";
+                a5.innerHTML += "arr.sort() : " + arr.sort() + "<br>";
+                a5.innerHTML += "arr 원본 재확인 : " + arr + "<br>";
+
+                // 직접 정렬 기준 만들기
+                a5.innerHTML += "arr.sort(fn) : " + arr.sort(function(left, right){
+                     return left - right; }) + "<br>"; 
+                a5.innerHTML += "arr.sort(fn) 내림차순 : " + arr.sort(function(left, right){
+                     return right - left; }) + "<br>"; 
+            }
+        </script>
+
+        <hr>
+
+        <h4>toString() : 배열을 문자열로 바꾸는 함수</h4>
+        <button onclick="arrFn6();">실행 확인</button>
+        <div class="area" id="area6"></div>
+
+        <script>
+            function arrFn6(){
+                var arr = ['나는', '오늘부터', '자바를', '시작한다.'];
+
+                var a6 = document.getElementById('area6');
+                a6.innerHTML = "기본 배열 확인 : " + arr + "<br>";
+
+                a6.innerHTML += "toString() : " + arr.toString() + "<br>";
+                a6.innerHTML += "arr 자료형 : " + typeof(arr) + "<br>";
+                a6.innerHTML += "arr.toString() 자료형 : " + typeof(arr.toString())+ "<br>";
+
+                a6.innerHTML += "join() : " + arr.join(' ') + "<br>";s
+            }
+            // join() 함수도 toString() 처럼 배열을 문자열로 합쳐준다.
+            // join() 함수를 사용하면 해당 배열을 합칠 때 구분자를 만들어 넣을 수도 있다.
+
+        </script>
+
+        <hr>
+
+        <h4>push() / pop() : </h4>
+        <p>
+            push() : 배열의 맨 뒤에 값을 추가하는 함수 <br>
+            pop() : 배열의 맨 뒤에 값을 하나 꺼내면서 제거하는 함수 
+        </p>
+        <button onclick="arrFn7();">확인하기</button>
+        <div class="area" id="area7"></div>
+
+        <script>
+            function arrFn7(){
+                var arr = ['김태욱','김건하','임경순','김현진','원준수'];
+
+                var a7 = document.getElementById('area7');
+                a7.innerHTML = "이단 : " + arr + "<br>";
+               
+                arr.push('허정욱');
+                a7.innerHTML += "이단 추가 : " + arr + "<br>";
+                
+                arr.sort();
+                a7.innerHTML += "이단 정렬 : " + arr + "<br>";
+                
+                a7.innerHTML += "pop() : " + arr.pop() + "<br>";
+                a7.innerHTML += "pop 이후 : " + arr + "<br>";
+            }
+        </script>
+
+        <hr>
+
+        <h4>unshift() / shift() : </h4>
+        <p>
+            unshift() : 배열의 맨 앞에 값을 추가하는 함수 <br>
+            shift() : 배열의 맨 앞의 값을 제거하는 함수
+        </p>
+        <button onclick="arrFn8();">확인하기</button>
+        <div class="area" id="area8"></div>
+
+        <script>
+            function arrFn8(){
+                var arr = ['야구','농구','축구','당구','배구','수구'];
+
+                var a8 = document.getElementById('area8');
+                
+                a8.innerHTML = "배열 확인 : " + arr + "<br>";
+
+                arr.unshift('족구');
+                a8.innerHTML += "배열 추가 확인 : " + arr + "<br>";
+
+                arr.sort();
+
+                a8.innerHTML += "shift() 확인 : " + arr.shift() + "<br>";
+                a8.innerHTML += "shift() 후 확인 : " + arr + "<br>";
+            }
+        </script>
+
+        <hr>
+
+        <h4>slice() / splice() :  </h4>
+        <P>
+            slice() : 배열의 요소를 선택하여 부분적으로 잘라내는 함수 <br>
+            splice() : 배열의 인덱스 위치에 요소를 추가하거나 제거하는 함수
+        </P>
+        <button onclick="arrFn9();">확인하기</button>
+        <div class="area" id="area9"></div>
+        <script>
+            function arrFn9(){
+                var arr = ['응용SW기초','Java','Oracle','UML','HTML','CSS','EDR'];
+                var a9 = document.getElementById('area9');
+
+                // slice(시작 순번, 끝 순번) : 해당하는 만큼을 잘라내되, 원본을 바꾸지는 않는다. 
+                a9.innerHTML = "arr : " + arr + "<br>";
+                a9.innerHTML += "arr.slice() : " + arr.slice(2,4) + "<br>";
+                a9.innerHTML += "slice() 후 arr : " + arr + "<br>";
+                a9.innerHTML += "----------------------------------- <br>";
+                // splice(시작 인덱스 , 제거할 갯수 , 추가할 값) : 해당하는 만큼 잘라내고, 추가한 값으로 채우며 원본에 영향을 줌
+                a9.innerHTML += "splice() : " + arr.splice(2,2,['mybatios','spring']) + "<br>";
+                a9.innerHTML += "splice() 후 arr : " + arr + "<br>";
+            }
+        </script>
+
+        <br><br>
+        <a href="../index.html">홈으로</a>
+    </body>
+</html>

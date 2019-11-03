@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<head>
+    <title>HTML 태그 접근하기</title>
+    <style>
+        .area{
+            width: 300px;
+            height: 200px;
+            border: 3px solid lightgoldenrodyellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML 태그 접근하기</h1>
+    <h3>아이디로 접근하기</h3>
+    <div id="area1" class="area"></div>
+    <button onclick="touchID();">아이디로 접근하기</button>
+
+    <script>
+        function touchID(){
+            var area1 = document.getElementById('area1');
+
+            area1.style.backgroundColor = 'yellow';
+            area1.innerHTML = "아이디로 접근 성공!!";
+            area1.style.color = 'green';
+        }    
+    </script>
+
+    <hr>
+
+    <h3>태그명으로 접근하기</h3>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+    </ul>
+
+    <button onclick="touchTagName();">태그명으로 접근하기</button>
+
+    <script>
+        function touchTagName(){
+            var list = document.getElementsByTagName('li');
+            console.log("li 개수 : " + list.length);
+
+            // for 반복문
+            /*
+            for(var i = 0 ; i < list.length ; i++){
+                list[i].style.backgroundColor = "rgb(130, 220, 50)";
+            }
+            */
+
+            // for - in 반복문
+            // 자바의 forEach와 유사하다.
+            var changeColor = 50;
+
+            for(var i in list){
+                console.log(list[i]);
+                list[i].style.backgroundColor = 'rgb(130, 220, '+ changeColor + ')';
+
+                changeColor += 50;
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h3>name 속성으로 접근하기</h3>
+
+    <form>
+        <fieldset>
+            <legend>주말 취미 선택하기</legend>
+            <table>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="hobby" value="lol">
+                        <label>리그오브레전드 하기</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobby" value="js">
+                        <label>JS 공부하기</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobby" value="aftereffect">
+                        <label>3D 영상 만들기</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="hobby" value="javaSong">
+                        <label>Java 도서 낭독</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobby" value="date">
+                        <label>가평 수목원 데이트</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="hobby" value="illust">
+                        <label>일러스트 그리기</label>
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
+    </form>
+
+    <div id="area2" class="area"></div>
+    <button onclick="touchName();">이름으로 접근하기</button>
+
+    <script>
+        function touchName(){
+            var hobby = document.getElementsByName('hobby');
+            
+            console.log("hobby 갯수 : " + hobby.length);
+
+            var resultItem = "";
+
+            for(var i in hobby){
+                if(hobby[i].checked == true){
+                    resultItem += hobby[i].value + "를 주말동안 합니다.";
+                }
+            }
+
+            document.getElementById('area2').innerHTML = resultItem;
+        }
+    </script>
+
+    <hr>
+
+    /*
+    input 요소와 차이점은 내용을 가질수 있다는 점
+    button 요소는 텍스트뿐만 아니라 이미지 요소를 자식으로 포함할수 있다.
+    <input type="button"> 과 <button type="button">은 기능적으로 동일하다.
+    그치만, button요소에 type속성을 넣지않으면 submit 기능을 수행한다.
+    버튼 자체를 submit 용도로 사용한다면 문제가 안되지만 스크립트 동작을 원할 경우 type을 정의해주면 된다. 
+
+    *button의 속성값
+    - type="submit" 전송기능
+    - type="reset" 내용을 초기화
+    - type="button" 기능구현에 많이 사용, 자바스크립트 실행을 목적으로 한다.
+    */
+
+    <h3>text 박스 안의 value 읽어오기</h3>
+    <form>
+        이름 : <input type="text" name="userName" id="userName"><br>
+        내용 : <input type="text" name="reason" id="reason"><br>
+        <input type="button" value="input 값 읽어오기" onclick="readValue();">
+    </form>
+
+    <div id="area3" class="area"></div>
+
+    <script>
+        function readValue(){
+            var userName = document.getElementById("userName");
+            var reason = document.getElementById("reason");
+
+            if(userName.value == "" || userName.length == 0){
+                alert("이름을 입력하세요.");
+            }else{
+                document.getElementById('area3').innerHTML = userName.value + "과 " +reason.value;
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h3>간이 실습 1 : </h3>
+    <p>
+        input type=password를 활용하여 비밀번호 유효성 검증하가 <br>
+        비밀번호를 입력받아 <br>
+        8자 미만이면 : 8자 이상이어야 합니다. <br>
+        16자 이상이먄 : 15자 까지만 입력해주세요. <br>
+        값이 비었으면 : 비밀번호를 입력해주세요. <br>
+        정상이면 : 로그인 성공!! <br>
+        alert() 띄우기 (단, input 태그의 id는 직접 만들어보고, id로 접근하여 구현하시오)
+    </p>
+
+    <hr>
+
+    <form>
+        비밀번호 : <input type="password" name="userPsw" id="userPsw">
+        <input type="button" value="비밀번호 제출" onclick="pswCheck();">
+    </form>
+
+    <script>
+        function pswCheck(){
+            var pass = document.getElementById('userPsw');
+            var chk = pass.value.length
+            
+            switch(validate(chk)){
+                case 0 : alert("로그인 성공");
+                    break;
+                case 1 : alert("8자 이상 입력해 주세요.");
+                    break;
+                case 2 : alert("16자 미만 입력해 주세요.");
+                    break;
+                case 3 : alert("비밀번호를 입력해 주세요.");
+                    break;
+            }
+        }
+
+        function validate(pwd){
+            var result = 0;
+
+            if(pwd < 8 && pwd != 0 ){
+                result = 1;
+            }else if (pwd > 15){
+                result = 2;
+            }else if (pwd == 0){
+                result = 3;
+            }
+
+            return result;
+        }
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

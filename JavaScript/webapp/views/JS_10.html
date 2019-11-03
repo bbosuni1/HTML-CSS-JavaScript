@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트 함수 Part.2</title>
+    <style>
+        p {
+            background: lightgoldenrodyellow;
+            width: 500px;
+            height: 200px;
+            border: 3px solid gold;
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트 함수 Part.2</h1>
+    
+    <h3>함수를 매개 변수로 전달하기</h3>
+    <pre>JS는 함수도 하나의 자료형이기 때문에 매개 변수로 전달할 수 있다.</pre>
+
+    <h4>익명 함수(Anoumymous function) 매개변수로 전달하기</h4>
+
+    <p id="p1"></p>
+
+    <script>
+        function callTenTimes(otherFn){
+            // 다른 함수를 매개 변수로 받아 10번 실행하는 함수 만들기
+            //alert("실행 확인!");
+
+            for(var i = 0 ; i < 10 ; i++){
+                otherFn(i);
+            }
+        }
+        // 익명함수로 바로 실행해보기
+        callTenTimes(function(i){var p1 = document.getElementById('p1')
+        p1.innerHTML += "다음부터는 지각하지 않겠습니다." + i + "<br>";
+        });
+    </script>
+
+    <hr>
+
+    <h4>선언적 함수를 매개 변수로 전달하기</h4>
+
+    <button onclick="callJustFn(justFn);">실행 확인</button>
+    <p id="p2"></p>
+
+    <script>
+        const callJustFn = otherFn => {for(var i = 10 ; i > 0 ; i--){ otherFn(i);}
+        document.getElementById('p2').style.backgroundColor = "black";
+        }
+        const justFn = i => {if (i > 5){alert(i + "번만 더 누르면 터집니다.");}
+                                else if (i>3){alert("진짜 터집니다.");}
+                                else if( i>1){alert("터지기 전 입니다.");}
+                                else alert("터졌습니다.");
+        }
+    </script>
+
+    <h4>익명함수를 반환하기</h4>
+
+    아이디 입력 : <input type="text" id="userId">
+    <button onclick="returnFn()();">실행 확인</button>
+
+    <script>
+        const returnFn = () => {var id = document.getElementById('userId').value;
+                                return () => {alert(id + "님, 로그인을 환영합니다.")};
+        }
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>데이터 형 변환</title>
+        <style>
+            .area {
+                width: 300px;
+                height: 250px;
+                background: khaki;
+                border: 3px solid olivedrab;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>데이터 형 변환</h1>
+
+        <h3>문자열 + 숫자</h3>
+        <p>자바와 동일하게 문자 + 숫자 = 문자열</p>
+        <p>숫자 + 숫자 + 문자열 = (숫자 + 숫자) + 문자열 = 문자열</p>
+
+        <button onclick="plus();">문자열 더하기 + 숫자</button>
+        <div class="area" id="area1"></div>
+
+        <script>
+            function plus(){
+                var test1 = 7 + "7";
+                var test2 = 7 + 7 + "7";
+                var test3 = "7" + 7 + 7;
+                var test4 = 7 + "7" + 7;
+                var test5 = "7" + (7+7);
+
+                var e = document.getElementById('area1');
+
+                e.innerHTML = "test1 : " + test1 + "<br>";
+                e.innerHTML += "test2 : " + test2 + "<br>";
+                e.innerHTML += "test3 : " + test3 + "<br>";
+                e.innerHTML += "test4 : " + test4 + "<br>";
+                e.innerHTML += "test5 : " + test5 + "<br>";
+                
+            }
+        </script>
+
+        <hr>
+
+        <h3>데이터 파싱</h3>
+        <p>문자열을 숫자로 바꿀 수 있다면 <br>
+            Number(), parseInt(), parseFloat()을 사용할 수 있고, <br>
+            반대로 숫자를 문자열로 바꾸고자 할 때 String() 함수를 사용할 수 있다.</p>
+
+        <button onclick="parseTest();">함수 실행하기</button>
+
+        <script>
+            function parseTest(){
+                var num1 = 2.5;
+                var num2 = "7";
+                var num3 = "5.5$";
+
+                console.log(num1);
+                console.log(num2);
+                console.log(num3);
+                
+                // Number()함수
+                console.log(Number(num1));
+                console.log(Number(num2));
+                console.log(Number(num3)); // NaN = Not a Number
+
+                // parseInt() 함수
+                console.log(parseInt(num1));
+                console.log(parseInt(num2));
+                console.log(parseInt(num3)); // 숫자로 바꿀 수 있는 순서까지는(문자 전까지) 바꿔 준다. 바꾸지 못한 뒤는 버린다.
+
+                // parseFloat() 함수
+                console.log(parseFloat(num1));
+                console.log(parseFloat(num2)); // 자바와 다르게 표현되어 있는 수자까지만 나온다. 7.000 (x)
+                console.log(parseFloat(num3));
+
+                // Number() 함수는 숫자로 변경 할 수 없다면 무조건 결과가 NaN로 나온다.
+                // 하지만 parseInt() 와 parseFloat()은 숫자로 바꿀 수 있는 부분은 최대한 숫자로 바꿔준다.
+
+                // 문자열로 바꾸는 String() 함수
+                console.log(String(num1));
+                console.log(String(num2));
+                console.log(String(num3));
+            }
+        </script>
+
+        <hr>
+
+        <h3>infinity(무한대)와 NaN</h3>
+        <p>
+            대부분의 프로그래밍언어들은 0으로 숫자를 나누면<br>
+            오류를 발생시킨다.  <br>
+            하지만, JS는 0으로 숫자를 나누면 한없이 0에 수렴한다는 <br>
+            infinity 라는 결과를 출력한다. <br>
+            또한, 계산의 결과가 숫자가 아니면 NaN를 출력한다.
+        </p>
+
+        <button onclick="testInfinite();">실행 확인하기</button>
+
+        <div id="area3" class="area"></div>
+        
+        <script>
+            function testInfinite(){
+                var num1 = 10 / 0 ;
+                var num2 = 10 / 'a' ;
+
+                var e3 = document.getElementById('area3');
+
+                e3.innerHTML = "10 / 0 = " + num1 + "<br>";
+                e3.innerHTML += "10 / 'a' = " + num2 + "<br>";
+
+                // 값이 무한한지, 값이 숫자가 아닌지 파악하는 함수 사용
+                e3.innerHTML += "isFinite() : " + isFinite(num1) + "<br>";
+                e3.innerHTML += "isNaN() : " + isNaN(num2) + "<br>";
+
+                // '==' 사용하여 비교하기
+                // Infinity / -Infinity
+                var num3 = -10 / 0 ;
+
+                e3.innerHTML += "num3 == Infinity ? " + (num3 == Infinity) + "<br>";
+                e3.innerHTML += "num3 == -Infinity ? " + (num3 == -Infinity) + "<br>";
+
+                e3.innerHTML += "num2 == NaN ? " + (num2 == NaN) + "<br>";
+                // NaN은 숫자가 아니라는 뜻으로 false의 의미도 가진다.
+                // 그래서 값을 비교할 때에는 반드시 isNaN()을 사용해야 한다.
+            }
+        </script>
+
+        <br><br>
+        <a href="../index.html">홈으로</a>
+    </body>
+</html>

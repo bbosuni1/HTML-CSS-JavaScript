@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<head>
+    
+    <title>기타 폼 관련 태그</title>
+</head>
+<body>
+
+    <h1>기타 폼 관련 태그</h1>
+
+    <h3>버튼 관련 태그들</h3>
+
+    <h4>일반 버튼(type = "botton")</h4>
+
+    <input type="button" value="일반 버튼">
+        
+    <h4>전송 버튼(type = "submit")</h4>
+    <form action="">
+        <input type="submit" value="전송 버튼">
+    </form>
+
+    <p>전송 버튼은 form 태그안에 있어야 작동한다.</p>
+
+    <h4>취소 버튼 ( type = "reset")</h4>
+    <input type="reset" value="취소 버튼">
+
+    <hr>
+
+    <!-- button 태그 -->
+    
+    <h4>버튼 태그 사용하기</h4>
+
+    <button>일반버튼</button>
+    &nbsp;
+    <button type="submit">전송 버튼</button>
+    &nbsp;
+    <button type="reset">취소버튼</button>
+
+    <p>버튼 태그를 사용하면 이미지도 버튼으로 바꿀 수 있다.</p>
+
+    <button type="button"><img src="../resources/image/flower5.PNG" alt="버튼 이미지" width="10%" height="10%"></button>
+
+    <hr>
+
+    <h3>select 태그와 option 태그들</h3>
+    <p>단일 선택일 경우</p>
+    이메일 : <select>
+        <option value="naver">@naver.com</option>
+        <option value="daum">@hanmail.net</option>
+        <option value="gmail">@gmail.com</option>
+        <option value="nate">@nate.com</option>
+        <option value="yahoo">@yahoo.com</option>
+        <option value="etc">기타</option>
+        </select>
+
+    <p>다중 속성 사용하기</p>
+    <select size="3" multiple>
+        <option value="ko">대한민국</option>
+        <option value="CH">스위스</option>
+        <option value="CA">캐나다</option>
+        <option value="UK">영국</option>
+        <option value="US">미국</option>
+        <option value="CN">중국</option>
+    </select>
+
+    <hr>
+
+    <h3>textarea</h3>
+    <P>문자열을 여러 줄로 입력할 수 있는 태그</P>
+
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <p>
+        textarea 속성 중 sytle에 resize : none; 을 적용하면 사이즈를 바꿀 수 없다.
+    </p>
+
+    <textarea name="" id="" cols="30" rows="10" style="resize: none;"></textarea>
+
+    <br>
+    <br>
+    <a href="index.html">홈으로</a>
+</body>
+</html>

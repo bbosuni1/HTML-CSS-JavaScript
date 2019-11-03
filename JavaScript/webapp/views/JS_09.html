@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트 함수 Part.1</title>
+        <style>
+            p{
+                width: 500px;
+                height: 200px;
+                border: 3px solid black;
+                background: lightgoldenrodyellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>자바스크립트 함수 Part.1</h1>
+
+        <h3>function 함수명 {. . .}</h3>
+        <button onclick="testFn1();">함수 실행</button>
+        <p id="p1"></p>
+
+        <Script>
+            function testFn1(){
+                document.getElementById('p1').innerHTML = "Hello Function!";
+            }
+        </Script>
+
+        <h3>즉석 실행 함수 : (function(){...})();</h3>
+        <P id="p2"></P>
+        <script>
+            (function(){
+                document.getElementById('p2').innerHTML = "즉석 실행 함수";
+            })();
+        </script>
+
+        <h3>익명 함수 : 함수명 = function(){. . .}</h3>
+        <p id="p3"></p>
+        <button onclick="testFn2();">함수 실행</button>
+
+        <script>
+            var testFn2 = function(){
+                document.getElementById('p3').innerHTML = '익명 함수 실행 확인';
+            }
+        </script>
+
+        <hr>
+
+        <h1>함수의 전달인자와 매개변수</h1>
+        <h3>기본 전달인자와 매개 변수</h3>
+        <button id="btn1">실행 확인</button>
+        <p id="p4"></p>
+        
+        <script>
+            document.getElementById('btn1').onclick = function(){
+                //testFn3();
+                //testFn3('내가 전달인자입니다.');
+                testFn3('나는 전달인자 입니다.','나도 전달인자 입니다.');
+            };
+            // 주어진 함수의 매개 변수보다 전달하는 인자가 더 많은 경우 초과한 전달 인자는 무시한다.
+            // 반대로 주어진 매개 변수 보다 전달하는 인자가 적은 경우 선언되지 않은 매개 변수는 undefined로 변한다.
+
+            function testFn3(value){
+                document.getElementById('p4').innerHTML += value + "<br>";
+            };
+        </script>
+
+        <h3>함수의 결과(return) 처리하기</h3>
+        <button id="btn2">실행확인</button>
+        <p id="p5"></p>
+
+        <script>
+            document.getElementById('btn2').onclick = function(){
+                // return 으로 함수의 결과를 반환할 경우
+                // 해당 결과를 다른 변수나 값으로 담아서 사용해야 한다.
+               // var result = sunTwoNumber(10,20);
+                document.getElementById('p5').innerHTML = sunTwoNumber(10,20);
+            }
+            function sunTwoNumber(num1,num2){
+                return num1 + num2 ;
+            }
+
+        </script>
+
+        <h3>가변인자 함수</h3>
+        <button onclick="testFn4();">실행 확인</button>
+        <p id="p6"></p>
+
+        <script>
+            function testFn4(){
+                // 몇 개가 들어오든 전부 확인해주는 함수
+                sumAll(1,2,3,4,5);
+                sumAll(1,2,3,4,5,6,7,8,9,10);
+            }
+            function sumAll(){
+                // arguments : 함수에 전달하는 값들
+                console.log("arguments 길이 : " + arguments.length);
+                console.log("arguments : " + arguments);
+                
+                // sumAll : 받은 숫자를 다 더하는 함수
+                var sum = 0;
+
+                for(var i = 0 ;i < arguments.length ; i++){
+                    sum += arguments[i];
+                }
+
+                document.getElementById('p6').innerHTML += "sum : " + sum + "<br>";
+            }
+        </script>
+
+        <hr>
+        
+        <h3>내부 중첩 함수</h3>
+            삼각형 밑변 : <input type="number" min="1" max="10" id="width"> <br>
+            삼각형 높이 : <input type="number" min="1" max="10" id="height"> <br>
+
+            <button onclick="testFn5();">실행 확인</button>
+
+            <script>
+                function testFn5(){
+                    var w = document.getElementById('width').value;
+                    var h = document.getElementById('height').value;
+
+                    logic(w,h); // 빗변 구해오는 함수 
+                    alert("빗변의 길이 : " + logic(w,h));
+                }
+                function logic(w,h){
+                    
+                    // 함수 안의 함수
+                    function pow(x) { 
+                        return x * x;
+                    }
+
+                    return Math.sqrt(pow(w) + pow(h));
+                }
+            </script>
+
+            <h3>재귀 함수</h3>
+            <h4>자기 자신을 호출하는 함수</h4>
+            <pre>5!</pre>
+            <input type="number" id="fac" min="1" max="10">
+            <button onclick="testFn6();">실행 확인</button>
+            <p id="p7"></p>
+
+            <script>
+                function testFn6(){
+                    var num = document.getElementById('fac').value;
+
+                    var p7 = document.getElementById('p7');
+                    p7.innerHTML = "factorial_for : " + fac_for(num) + "<br>";
+
+                    p7.innerHTML += "factorial_rec : " + fac_rec(num) + "<br>";
+                }
+                // for문을 활용한 반복
+                function fac_for(num){
+                    var result = 1;
+                    for(var i = 1 ; i <= num ; i++){
+                        result *= i;
+                    }
+                    return result;
+                }
+                // 재귀함수를 이용한 방법
+                function fac_rec(num){
+                    if(num ==1){
+                        return num;
+                    }else{
+                        return num * fac_rec(num-1);
+                    }
+
+                }
+
+            </script>
+        
+        <br><br>
+        <a href="../index.html">홈으로</a>
+    </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>목록 관련 스타일</title>
+
+        <style>
+        /* 순서가 없는 목록 */
+        #default-ul{list-style-type: disc;}
+        #circle-ul{list-style-type: circle;}
+        #square-ul{list-style-type: square;}
+        #none-ul{list-style-type: none;}
+
+        /* 순서가 있는 목록 */
+        #default-ol{list-style-type: decimal;}
+        #leading-zero-ol{list-style-type: decimal-leading-zero;}
+
+        /* 이미지로 목록 표현 */
+        #image-ul{list-style-image: url("../resources/image/BULLET.jpeg");}
+
+        </style>
+    </head>
+    <body>
+        <h1>목록 관련 스타일</h1>
+
+        <hr>
+
+        <h3>순서가 없는 목록 스타일</h3>
+        <pre>선택자 {list-style-type : disc | circle | square | none; }</pre>
+
+        <h4>일반 블릿기호</h4>
+        <ul id="default-ul">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+        </ul>
+
+        <h4>속이 빈 블릿기호</h4>
+        <ul id="circle-ul">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+        </ul>
+
+        <h4>사각형 블릿기호</h4>
+        <ul id="square-ul">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+        </ul>
+
+        <h4>블릿기호 없음</h4>
+        <ul id="none-ul">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+        </ul>
+
+        <hr>
+
+        <h3>순서가 있는 목록 스타일</h3>
+        <pre>선택자 {list-style-typle : decimal | decimal-leading-zero | lower-roman | upper-roman | 
+            lower-alpha | upper-alpha ;}</pre>
+        
+        <h4>기본 형식</h4>
+        <ol id="default-ol">
+            <li>가</li>
+            <li>나</li>
+            <li>다</li>
+            <li>라</li>
+        </ol>
+
+        <h4>decimal-leading-zero</h4>
+        <ol id="leading-zero-ol">
+            <li>가</li>
+            <li>나</li>
+            <li>다</li>
+            <li>라</li>
+        </ol>
+
+        <hr>
+
+        <h3>기호대신 이미지로 목록 표기하기</h3>
+        <pre>선택자 {list-style-type : url("이미지의 경로"); }</pre>
+        <ul id="image-ul">
+            <li>피카츄</li>
+            <li>라이츄</li>
+            <li>파이리</li>
+            <li>꼬북이</li>
+        </ul>
+        
+        <br>
+        <br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

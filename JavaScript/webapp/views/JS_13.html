@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트 객체(JSON)</title>
+    <style>
+        .area{
+            width : 800px;
+            height: auto;
+            border: 3px solid darkkhaki;
+            background: bisque;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트 객체!(JSON)</h1>
+    <h3>객체 선언 및 호출</h3>
+    <p>
+        자바스크립트 객체는 키와 값으로 이루어져 있으며 <br>
+        키는 속성명으로, 값은 속성에 대한 값으로 사용하여 각각을 식별한다. <br>
+        또한 선언 시에는 중괄호({})를 사용한다. <br>
+        또한 속성명은 반드시 문자열이어야 한며, 속성 값은 모든 자료형이 올 수 있다.
+    </p>
+
+    <button onclick="test1();">실행 확인</button>
+    <div class="area" id="area1"></div>
+
+    <script>
+        const test1 = () => { const coconut = {
+            type : "oil",
+            name : "wilson",
+            recipe : ["water", "oil", "underMySkin"],
+            origin : "amazon"
+            };
+        console.log(coconut);
+        var a1 = document.getElementById('area1');
+        
+        a1.innerHTML = "coconut : " + coconut + "<br>";
+
+        // 1. 객체명['key']로 값 하나씩 꺼내기
+        a1.innerHTML += "coconut['type'] : " + coconut['type'] + "<br>";
+        a1.innerHTML += "coconut['name'] : " + coconut['name'] + "<br>";
+        a1.innerHTML += "coconut['recipe'] : " + coconut['recipe'] + "<br>";
+        a1.innerHTML += "coconut['recipe'] : " + coconut['recipe'][0] + "<br>";
+        a1.innerHTML += "coconut['origin] : " + coconut['origin'] + "<br>";
+        a1.innerHTML += "------------------------------------------ <br>"
+        // 2. 객체명.key 로 값 하나씩 꺼내기
+        a1.innerHTML += "coconut['type'] : " + coconut.type + "<br>";
+        a1.innerHTML += "coconut['name'] : " + coconut.name + "<br>";
+        a1.innerHTML += "coconut['recipe'] : " + coconut.recipe + "<br>";
+        a1.innerHTML += "coconut['recipe'] : " + coconut.recipe[0] + "<br>";
+        a1.innerHTML += "coconut['origin] : " + coconut.origin + "<br>";
+        };
+    </script>
+
+    <hr>
+
+    <h3>객체의 키 식별자 확인하기</h3>
+    <p>객체의 키에는 모든 문자열을 사용할 수 있으나, <br>
+    식별자로 사용할 수 없는 특수문자가 키명에 포함될 경우 <br>
+    무조건 대괄호 방식으로 사용해야 한다.</p>
+
+    <button onclick="test2();">실행 확인</button>
+    <div class="area" id="area2"></div>
+
+    <script>
+        const test2 = () => { var sample = { 'I LOVE COFFEE' : '머리',
+            'IHATE!@#$%^' : '아파',
+            };
+            var a2 = document.getElementById('area2');
+
+            // a2.innerHTML = sample.'I LOVE COFFEE';
+            // a2.innerHTML = sample.'IHATE!@#$%^';
+            a2.innerHTML = sample['I LOVE COFFEE'];
+            a2.innerHTML += sample['IHATE!@#$%^'];
+        };
+    </script>
+    
+    <hr>
+
+    <h3>객체 안의 메소드 함수</h3>
+
+    <p>
+        객체 안에 속성의 값으로 함수를 저장할 수도 있다.
+    </p>
+    <button onclick="test3();">실행 확인</button>
+    <div class="area" id="area3"></div>
+
+    <script>
+        const test3 = () => {
+            var a3 = document.getElementById('area3');
+            var dog = { name : '초롱이', // 객체 안의 다른 필드 변수를 접근할 때에는 this. 를 사용한다.
+            eat : function(food){ a3.innerHTML += this.name + '가 ' + food +'를 먹습니다.'}
+            };
+
+            var food = window.prompt("먹이를 주세요.");
+
+            dog.eat(food);        
+        };
+    </script>
+
+    <h3>객체와 반복문</h3>
+    <p>
+        객체 안의 각 속성들을 확인할 때 for in 반복문을 사용할 수 있다!
+    </p>
+    
+    <button onclick="test4();">실행 확인</button>
+    <div class="area" id="area4"></div>
+
+    <script>
+        const test4 = () => { var car = { name : '소나타', fuel : 4, brand : 'HYUNDAI'}
+            console.log(car);
+            var a4 = document.getElementById('area4');
+            for(var key in car){
+                a4.innerHTML += key + " : " + car[key] + "<br>";
+            };
+        };
+    </script>
+
+    <hr>
+    
+    <h3>객체에 필드 추가하거나 삭제하기</h3>
+    <p>
+        처음 객체를 생성한 후에도 속성을 추가 / 삭제 할 수 있다.
+    </p>
+
+    <button onclick="test5();">실행 확인</button>
+
+    <div class="area" id="area5"></div>
+
+    <script>
+        const test5 = () => {
+            // 속이 빈 객체 생성
+            var student = {};
+            var a5 = document.getElementById('area5');
+            console.log(student);
+            // 객체에 값 추가하기
+            student.name = '김동현';
+            student.age = 30;
+            student.hobby = '잠자기';
+            student.gender = 'M';
+            student.wish = '부동산투기';
+            console.log(student);
+            // 객체의 값 삭제하기
+            delete(student.wish);
+            console.log(student);
+        };
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

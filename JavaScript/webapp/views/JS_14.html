@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트 객체 배열</title>
+    <style>
+        .area {
+            width: 500px;
+            height: auto;
+            padding: 10px;
+            border: 3px solid red;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트 객체 배열</h1>
+
+    <h3>객체와 배열 함께 사용하기</h3>
+    <button onclick="test1();">실행 확인</button>
+    <div class="area" id="area1"></div>
+
+    <script>
+        const test1 = () => {
+            var movieStar0 = {
+                name : '강동원',
+                age : 39,
+                hobby : '집에서 롤하기'
+            }
+            var movieStar1 = {
+                name : '조진웅',
+                age : 45,
+                hobby : '음주'
+            }
+            var movieStar2 = {
+                name : '로다주',
+                age : 55,
+                hobby : '아이언맨'
+            }
+            var movieStar3 = {
+                name : '안젤리나 졸리',
+                age : 45,
+                hobby : '아들 입시 준비'
+            }
+
+            var stars = [];
+
+            stars.push(movieStar0);
+            stars.push(movieStar1);
+            stars.push(movieStar2);
+            stars.push(movieStar3);
+
+            console.log(stars);
+            var a1 = document.getElementById('area1');
+
+            for( var st in stars ){
+                a1.innerHTML +=  " 이름 : " + stars[st].name + " 나이 : " + stars[st].age + " 취미 : " + stars[st].hobby + "<br>";
+            };
+            for ( var key in movieStar0){
+                a1.innerHTML += movieStar0[key] + " ";
+            }
+        };
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

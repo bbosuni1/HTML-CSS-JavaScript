@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>글자 관련 스타일</title>
+        <style>
+            /* color 속성 */
+            #c-name{color: olivedrab;}
+            #c-16{color: #877B0D}
+            #c-rgb{color:rgb(229, 81, 96)}
+            #c-rgba{color:rgb(229,81,96,0.5)}
+            #c-hsl{color:hsl(223.08, 51.44%, 95.29%)}
+            #c-hsla{color:hsl(223.08, 51.44%, 95.29%, 0.5)}
+
+            /* text-decoration 속성 */
+            #td1{text-decoration: none;}
+            #td2{text-decoration: underline;}
+            #td3{text-decoration: overline;}
+            #td4{text-decoration: line-through;}
+            #td5{text-decoration: none;}
+
+            /* text-shadow 속성 */
+            .shadow{
+                /* 공통 속성 */
+                font-family: "Apple Chancery";
+                font-size: 100px;
+                line-height: 300px;
+                font-weight: 900;
+            }
+            /* 그림자 효과 부여하기 */
+            #ts1{color: orange;
+            text-shadow: 5px 5px orangered;}
+            #ts2{color: white;
+            text-shadow: 0 1px 20px gray;
+            }
+            #ts3{color: white;
+            text-shadow: 1px 1px 10px #66ff00;}
+            #ts4{color: black;
+            text-shadow: 0 0 4px #cccccc,
+                         0 -5px 4px #ffff33,
+                         2px -10px 6px #ff8800,
+                         2px -19px 18px #ff2200;}
+            #bg{background: black;}
+
+            /* white-space 속성 */
+            #space1{ white-space: normal;}
+            #space2{ white-space: nowrap;}
+            #space3{ white-space: pre;}
+            #space4{ white-space: pre-line;}
+
+        </style>
+    </head>
+    <body>
+        <h1>글자 관련 스타일</h1>
+        <hr>
+        
+        <h3>color 속성 : 글자의 색상을 설정</h3>
+        <pre>선택자 { color : 색상명 | 16진수 숫자 | rgb값 | rgba값 | hsl값 | hsla 값 ;}</pre>
+        <p>색상 참조 사이트 : </p>
+        <a href="http://www.colorpicker.com">colorpicker</a>
+
+        <ul>
+            <li id="c-name">색상명으로 확인하기</li>
+            <li id="c-16">16진수로 확인하기</li>
+            <li id="c-rgb">rgb값으로 확인하기</li>
+            <li id="c-rgba">rgba값으로 확인하기</li>
+            <li id="c-hsl">hsl값으로 확인하기</li>
+            <li id="c-hsla">hsla값으로 확인하기</li>
+        </ul>
+
+        <hr>
+
+        <h3>text-decoration : 글자의 밑줄, 취소선을 표현하는 속성</h3>
+        <pre>선택자 {text-decoration : none | underline | overline | line-through }</pre>
+
+        <ul>
+            <li id="td1">밑줄 표현하기</li>
+            <li id="td2">가운데 줄 표현하기</li>
+            <li id="td3">윗줄 표현하기</li>
+            <li id="td4">취소선 표현하기</li>
+            <li><a href="#" id="td5">하이퍼 링크 표현하기</a></li>
+        </ul>
+
+        <hr>
+
+        <h3>text-shadow : 글자에 그림자 설정</h3>
+        <pre>선택자 { text-shadow : none | 가로거리 세로거리 번짐정도 색상 ;}</pre>
+
+        <div id="bg">
+            <span id="ts1" class="shadow">HTML5</span>
+            &nbsp;&nbsp;&nbsp;
+            <span id="ts2" class="shadow">HTML5</span>
+            &nbsp;&nbsp;&nbsp;
+            <span id="ts3" class="shadow">HTML5</span>
+            &nbsp;&nbsp;&nbsp;
+            <span id="ts4" class="shadow">HTML5</span>
+        </div>
+
+        <hr>
+
+        <h3>white-space : 글자 간 여백 설정 속성</h3>
+        <pre>선택자 { white-space : normal | nowrap | pre | pre-line; }</pre>
+
+        <p id="space1">사법권은 법관으로 구성된 법원에 속한다. 대한민국의 영토는 한반도와 그 부속도서로 한다. 헌법재판소는 법률에 저촉되지 아니하는 범위안에서 심판에 관한 절차, 내부규율과 사무처리에 관한 규칙을 제정할 수 있다.
+
+                국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다. 타인의 범죄행위로 인하여 생명·신체에 대한 피해를 받은 국민은 법률이 정하는 바에 의하여 국가로부터 구조를 받을 수 있다.
+                
+                대통령은 제3항과 제4항의 사유를 지체없이 공포하여야 한다. 제안된 헌법개정안은 대통령이 20일 이상의 기간 이를 공고하여야 한다. 헌법재판소는 법관의 자격을 가진 9인의 재판관으로 구성하며, 재판관은 대통령이 임명한다.</p>
+        <p id="space2">국회는 법률에 저촉되지 아니하는 범위안에서 의사와 내부규율에 관한 규칙을 제정할 수 있다. 대한민국의 영토는 한반도와 그 부속도서로 한다. 대통령은 법률안의 일부에 대하여 또는 법률안을 수정하여 재의를 요구할 수 없다.
+
+                모든 국민은 직업선택의 자유를 가진다. 대통령은 전시·사변 또는 이에 준하는 국가비상사태에 있어서 병력으로써 군사상의 필요에 응하거나 공공의 안녕질서를 유지할 필요가 있을 때에는 법률이 정하는 바에 의하여 계엄을 선포할 수 있다.
+                
+                외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 제2항과 제3항의 처분에 대하여는 법원에 제소할 수 없다. 비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.</p>
+        <p id="space3">모든 국민은 근로의 권리를 가진다. 국가는 사회적·경제적 방법으로 근로자의 고용의 증진과 적정임금의 보장에 노력하여야 하며, 법률이 정하는 바에 의하여 최저임금제를 시행하여야 한다.
+
+                국채를 모집하거나 예산외에 국가의 부담이 될 계약을 체결하려 할 때에는 정부는 미리 국회의 의결을 얻어야 한다. 헌법에 의하여 체결·공포된 조약과 일반적으로 승인된 국제법규는 국내법과 같은 효력을 가진다.
+                
+                행정권은 대통령을 수반으로 하는 정부에 속한다. 군인·군무원·경찰공무원 기타 법률이 정하는 자가 전투·훈련등 직무집행과 관련하여 받은 손해에 대하여는 법률이 정하는 보상외에 국가 또는 공공단체에 공무원의 직무상 불법행위로 인한 배상은 청구할 수 없다.</p>
+        <p id="space4">대통령은 필요하다고 인정할 때에는 외교·국방·통일 기타 국가안위에 관한 중요정책을 국민투표에 붙일 수 있다. 국가는 국민 모두의 생산 및 생활의 기반이 되는 국토의 효율적이고 균형있는 이용·개발과 보전을 위하여 법률이 정하는 바에 의하여 그에 관한 필요한 제한과 의무를 과할 수 있다.
+
+                위원은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니한다. 모든 국민은 직업선택의 자유를 가진다. 국군은 국가의 안전보장과 국토방위의 신성한 의무를 수행함을 사명으로 하며, 그 정치적 중립성은 준수된다.
+                
+                국회는 국민의 보통·평등·직접·비밀선거에 의하여 선출된 국회의원으로 구성한다. 여자의 근로는 특별한 보호를 받으며, 고용·임금 및 근로조건에 있어서 부당한 차별을 받지 아니한다.</p>
+
+        <br>
+        <br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

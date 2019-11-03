@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>이미지 기타 변형 속성들</title>
+        <style>
+        .wrap1{
+            overflow: hidden;
+            border: 1px solid navy;
+            width: 300px;
+            height: 300px;
+            display: inline-block;
+        }
+        .wrap1 img{
+            width: auto;
+            height: 300px;
+            border: 1px solid red;
+        }
+        .left-top:active{
+            transform-origin: left top;
+            transform: rotateZ(25deg);
+        }
+        .left-bottom:active{
+            transform-origin: left bottom;
+            transform: skew(20deg, 20deg);
+        }
+        .right-top:active{
+            transform-origin: right top;
+            transform: scale(1.5, 1.5);
+        }
+        .right-bottom:active{
+            transform-origin: right bottom;
+            transform: scale(1.5, 1.5);
+        }
+
+        .wrap2{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            display: inline-block;
+        }
+        .box1{
+            width: 200px;
+            height: 200px;
+            background: blue;
+            transform: perspective(500px) rotateY(45deg);
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background: lightskyblue;
+            transform-origin: left top;
+            transform: rotateX(45deg);
+        }
+        .style2{
+            transform-style: preserve-3d;
+        }
+
+        </style>
+    </head>
+
+    <body>
+        <h1>이미지 기타 변형 속성들</h1>
+        
+        <hr>
+        
+        <h3>변형의 기준점 설정하기</h3>
+        <P>transform-origin 속성을 설정하면 변형의 기준점을 잡을 수 있다</P>
+        
+        <div>
+            <div class="wrap1"><img src="../resources/image/리사.gif" alt="리사1" class="left-top"></div>
+            <div class="wrap1"><img src="../resources/image/리사2.gif" alt="리사2" class="left-bottom"></div>
+            <div class="wrap1"><img src="../resources/image/제니.gif" alt="제니1" class="right-top"></div>
+            <div class="wrap1"><img src="../resources/image/제니2.gif" alt="제니2" class="right-bottom"></div>
+        </div>
+
+        <hr>
+
+        <h3>3D 변형 설정하기</h3>
+            <div class="wrap2">
+                <div class="box1 style1">
+                    <div class="box2"></div>
+                </div>
+            </div>
+
+            <div class="wrap2">
+                <div class="box1 style2">
+                    <div class="box2"></div>
+                </div>
+            </div>
+
+        <br><br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

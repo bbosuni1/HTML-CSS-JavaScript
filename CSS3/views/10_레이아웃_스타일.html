@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>레이아웃 스타일</title>
+        <style>
+            /* 고정 크기와 가변 크기 */
+            .test-size{
+                border: 2px solid black;
+                height: 200px;
+            }
+            #test1{width: 300px;}
+            #test2{width: 50%;}
+
+            /* 블럭을 인라인으로 변경하기 */
+            .block {
+                width: 150px;
+                height: 150px;
+                border: 1px solid black;
+                color: white;
+            }
+
+            .area1{ background: red}
+            .area2{ background: blue}
+            .area3{ background: green}
+            .area4{ background: black}
+            .area5{ background: hotpink}
+
+            .block-test{display: inline;}
+
+            .block-test2{display: inline-block;}
+
+            /* 인라인을 블럭으로 변경하기 */
+            .block-test3{display: block;}
+        </style>
+    </head>
+    <body>
+        <h1>레이아웃 스타일</h1>
+        
+        <h3>width, height</h3>
+
+        <h4>고정 크기</h4>
+        <div id="test1" class="test-size"></div>
+
+        <h4>가변 크기</h4>
+        <div id="test2" class="test-size"></div>
+
+        <hr>
+        
+        <h3>화면 배치 방법</h3>
+        <p>div 태그는 서로 같은 줄에 위치하지 않는 block태그 이다. <br>
+        하지만, 필요할 경우 블럭 속성을 인라인 속성으로 변경할 수 있다.</p>
+
+        <div class="block block-test area1">첫번째 영역</div>
+        <div class="block block-test area2">두번째 영역</div>
+        <div class="block block-test area3">세번째 영역</div>
+        <div class="block block-test area4">네번째 영역</div>
+        <div class="block block-test area5">다섯번째 영역</div>
+
+        <h3>블럭 속성과 인라인 속성 혼합하기</h3>
+        <p>영역설정은 인라인으로, 각 요소의 크기는 블럭으로 설정</p>
+        <div class="block block-test2 area1">첫번째 영역</div>
+        <div class="block block-test2 area2">두번째 영역</div>
+        <div class="block block-test2 area3">세번째 영역</div>
+        <div class="block block-test2 area4">네번째 영역</div>
+        <div class="block block-test2 area5">다섯번째 영역</div>
+
+        <h3>인라인을 블럭으로 변경하기</h3>
+        <span class="block block-test3 area1">첫번째 영역</span>
+        <span class="block block-test3 area2">두번째 영역</span>
+        <span class="block block-test3 area3">세번째 영역</span>
+        <span class="block block-test3 area4">네번째 영역</span>
+        <span class="block block-test3 area5">다섯번째 영역</span>
+        
+        <br>
+        <br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

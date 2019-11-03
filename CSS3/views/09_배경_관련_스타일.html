@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>배경 관련 스타일</title>
+        <style>
+            /* 배경색 설정하기 */
+            body{
+            background:goldenrod;}
+
+            /* div에 배경 색 적용하기 */
+            #div-bg{
+                width: 50%;
+                background-color:olivedrab;
+            }
+
+            /* 배경 영역 설정하기 */
+            .div-test{
+                background-color: snow;
+                margin: 20px;
+                padding: 30px;
+                width: 20%;
+                border: 5px dashed black ;
+                /* float: left; */
+            }
+            #div1{background-clip: border-box;}
+            #div2{background-clip: padding-box;}
+            #div3{background-clip: content-box;}
+
+            /* 배경 이미지 설정하기 */
+            #div-img{
+                width: 70%;
+                height: 800px;
+                border: 1px solid black;
+                background-image: url("../resources/image/bgsample.png");
+
+                background-repeat: no-repeat;
+                /*
+                background-repeat: repeat; 기본 값
+                background-repeat: repeat-x; 가로만 반복
+                background-repeat: repeat-y; 세로만 반복
+                background-repeat: no-repeat; 반복 없음
+                */
+
+                background-size: 80% 80%;
+                /*
+                background-size: auto; (기본값)
+                background-size: 가로% 세로%; (사용자 정의 값)
+                background-size: contain; (그림기준으로 공간 채움)
+                background-size: cover; (공간기준으로 공간을 매꾼다)
+                */
+
+                /* 그림의 위치 조정 */
+                background-position: 50% 50%;
+                /*
+                background-position: [left | right | center][top | bottom | center]
+                background-position: left top
+                background-position: right center
+                background-position: center top
+                background-position: 200px 200px (고정 위치)
+                */
+
+                background-attachment: fixed;
+                
+                /*
+                background-attachment: scroll; (기본값)
+                */
+
+
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>배경 관련 스타일</h1>
+        
+        <hr>
+        
+        <h3>배경색 설정하기</h3>
+        <pre>body{ background-color : 색상; }</pre>
+
+        <hr>
+
+        <h3>div에 배경 설정하기</h3>
+        <p>div 영역을 설정한 뒤, 배경색을 div에 따로 지정해야 한다.</p>
+        <div id="div-bg">
+                헌법에 의하여 체결·공포된 조약과 일반적으로 승인된 국제법규는 국내법과 같은 효력을 가진다. 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
+                국가는 청원에 대하여 심사할 의무를 진다. 대한민국은 국제평화의 유지에 노력하고 침략적 전쟁을 부인한다. 대통령은 제4항과 제5항의 규정에 의하여 확정된 법률을 지체없이 공포하여야 한다. 제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.
+        </div>
+
+        <hr>
+
+        <h3>배경의 적용 범위 선택하기</h3>
+        <p>배경의 영역을 설정할 때 배경 색상 뿐만 아니라 배경의 범위도 설정할 수 있다</p>
+        <div class="div-test" id="div1">헌법에 의하여 체결·공포된 조약과 일반적으로 승인된 국제법규는 국내법과 같은 효력을 가진다. 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
+                국가는 청원에 대하여 심사할 의무를 진다. 대한민국은 국제평화의 유지에 노력하고 침략적 전쟁을 부인한다. 대통령은 제4항과 제5항의 규정에 의하여 확정된 법률을 지체없이 공포하여야 한다. 제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.</div>
+        <div class="div-test" id="div2">헌법에 의하여 체결·공포된 조약과 일반적으로 승인된 국제법규는 국내법과 같은 효력을 가진다. 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
+                국가는 청원에 대하여 심사할 의무를 진다. 대한민국은 국제평화의 유지에 노력하고 침략적 전쟁을 부인한다. 대통령은 제4항과 제5항의 규정에 의하여 확정된 법률을 지체없이 공포하여야 한다. 제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.</div>
+        <div class="div-test" id="div3">헌법에 의하여 체결·공포된 조약과 일반적으로 승인된 국제법규는 국내법과 같은 효력을 가진다. 모든 국민은 능력에 따라 균등하게 교육을 받을 권리를 가진다.
+                국가는 청원에 대하여 심사할 의무를 진다. 대한민국은 국제평화의 유지에 노력하고 침략적 전쟁을 부인한다. 대통령은 제4항과 제5항의 규정에 의하여 확정된 법률을 지체없이 공포하여야 한다. 제5항에 의하여 법률이 확정된 후 또는 제4항에 의한 확정법률이 정부에 이송된 후 5일 이내에 대통령이 공포하지 아니할 때에는 국회의장이 이를 공포한다.</div>
+
+        <hr>
+
+        <h3>배경에 이미지 설정하기</h3>
+        <p>background-image 속성을 활용하여 배경 사진을 넣을 수 있다. <br>
+            사진의 크기에 따라 반복 여부를 설정할 수 있고, <br>
+            배경의 이미지가 배경의 크기보다 크다면 이미지를 자를 수도 있다. <br>
+            background-repeat 와 background-size 속성을 각각 사용한다.
+        </p>
+
+        <div id="div-img"></div>
+
+        <br>
+        <br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

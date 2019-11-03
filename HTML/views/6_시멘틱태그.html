@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>시멘틱 태그</title>
+    <style>
+        header{
+            border: 1px solid black;
+            background: red;
+        }
+        section{
+            border: 1px dashed black;
+            background:orange;
+        }
+        article{
+            border: 1px solid black;
+            background: yellow;
+        }
+        aside{
+            border: 1px solid black;
+            background: green;
+            color: snow;
+        }
+
+        footer{
+            border: 1px solid black;
+            background: blue;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--
+        시멘틱 (Semantic)태그 : 
+            웹 접근성 및 웹 문서의 구조를 기존의 div만을 사용하여 방식에서 보다 구체적인 영역으로 구조를 세분화 하는 태그를 말한다.
+        <div id="header"> ==> <header>
+
+        <header> : 머릿글
+        <nav> : 주 메뉴
+        <section> : 주제 관련 내용
+        <article> : 주제 관련 글 하나
+        <aside> : 주제 관련 부가 내용, 광고 등
+        <footer> : 웹 문서의 저자, 저작권 등을 명시하는 바닥글
+    -->
+
+    <header>
+        <!-- 웹 문서의 머릿글 -->
+        저는 머릿글 입니다.
+        <nav>
+            <!-- 웹 문서의 주 메뉴-->
+            <ul>
+                <li>공지사항</li>
+                <li>자유게시판</li>
+                <li>출석체크</li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <section>
+        <!-- 해당 웹 문서의 주제와 관련된 내용 -->
+        주제 관련 내용 영역 입니다.
+        <article>
+            <p>주제 관련 첫번째 내용입니다.</p>
+        </article>
+        <article
+            ><p>주제 관련 두번째 내용입니다.</p>
+        </article>
+        <article>
+            <p>주제 관련 세번째 내용입니다.</p>
+        </article>
+    </section>
+    
+    <aside>
+        <!-- 주제와 크게 관련이 없거나 화면에 부가적으로 표현할 내용 -->
+        주제와 무관하거나 관련이 조금은 있는 영역입니다.
+    </aside>
+
+    <footer>
+        <!-- 해당 웹 문서의 제작자나 저작권등을 명시하는 영역 -->
+        본 문서는 352 Class 의 시멘틱 태그 수업 문서입니다. <br>
+        사이트 소유자의 허가 없이 무단 도용 및 재배포, 수정을 허용합니다.<br>
+        Copyright by 352 allday Class. 
+    </footer>
+
+    <br>
+    <br>
+    <br>
+
+    <a href="index.html">홈으로 돌아가기.</a>
+
+</body>
+</html>

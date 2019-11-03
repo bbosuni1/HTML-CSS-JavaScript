@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CSS 선택자 3</title>
+        <style>
+            /* 일반 구조 선택자 */
+            /* 형제 관계 태그 중 첫번째 태그 선택하기 */
+
+           #test1>p:first-child{ background: cornsilk;}
+            /* 형제 태그 중 마지막 태그 선택하기 */
+           #test1>*:last-child{ background: crimson;}
+           /* 형제 태그 중 n번째 태그 선택하기 */
+           #test1 p:nth-child(2n){ background: cornflowerblue;}
+
+           /* 형제 태그 중 뒤에서 n번째 태그 선택하기 */
+           #test1 p:nth-last-child(4){ background: deeppink;}
+
+           /* 형태 구조 선택자 */
+           /* 형제 태그 중 첫번째 p태그 선택하기 */
+           #test2 p:first-of-type{
+               background: red;
+               color: snow;
+           }
+           /* 형제 태그 중 마지막 p태그 */
+           #test2 p:last-of-type{
+               background: springgreen;
+               color: tomato;
+           }
+           /* 형제 태그 중 앞에서 n번째 태그 선택 */
+           #test2 p:nth-of-type(2n - 1){
+               background: sandybrown;
+           }
+           /* 형제 태그 중 뒤에서 n번째 태그 선택 */
+           #test2 p:nth-last-of-type(2){
+               background: olivedrab;
+           }
+           /* 부정 선택자 */
+           #test3 p:not(:nth-last-child(1)){
+               background: skyblue;
+           }
+
+
+        </style>
+
+    </head>
+
+    <body>
+        <h1>CSS 선택자 3</h1>
+
+        <hr>
+
+        <h2>일반 구조 선택자</h2>
+        <p>특정 위치에 있는 요소 선택하기</p>
+        <div id="test1">
+            <p>김치찌개 + 계란후라이 + 김가루</p>
+            <p>맥주창고</p>
+            <p>샐러드</p>
+            <p>스테이크</p>
+            <p>마크 정식</p>
+            <pre>야채 볶음밥(당근, 감자, 양파, 김치, 햄)</pre>
+        </div>
+
+        <h2>형태 구조 선택자</h2>
+        <p>특정한 위치에 있는 태그들을 선택할 때 사용 <br>
+        (태그 종류 별 구분 가능)</p>
+        <div id="test2">
+            <p>김치찌개 + 계란후라이 3개 + 라면사리</p>
+            <p>맥주창고 (훈제 오리)</p>
+            <p>샐러드 (닭가슴살)</p>
+            <p>삼겹살</p>
+            <p>샐러드</p>
+        </div>
+
+        <hr>
+
+        <h2>부정 선택자</h2>
+        <p>선택한 요소를 제외한 나머지를 선택하는 방법</p>
+        <div id="test3">
+            <p>맛동산</p>
+            <p>오레오</p>
+            <p>치즈맛 나쵸</p>
+            <p>스윙칩</p>
+            <p>쌀 새우깡</p>
+        </div>
+
+
+        <br>
+        <br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

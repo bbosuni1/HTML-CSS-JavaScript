@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>자바스크립트 내장 객체</title>
+    <style>
+        body > div {
+            width: 500px;
+            height: auto;
+            border: 3px solid blue;
+            background: lightcyan;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>자바스크립트 내장 객체</h1>
+    <h3>Object 객체 </h3>
+    <p>자바 스크립트에서 기본적으로 만들어주는 객체</p>
+    <button onclick="test1();">실행 확인</button>
+
+    <script>
+        function test1(){
+            var obj1 = new Object();
+            var obj2 = {};
+
+            console.log(obj1);
+            console.log(obj2);
+        }
+    </script>
+
+    <p>hasOwnProperty() : 해당하는 객체가 가진 값을 확인</p>
+
+    <button onclick="test2();">실행 확인</button>
+    <div id="area2"></div>
+
+    <script>
+        const test2 = () => { var obj = { name : '홍길동',
+                                          age : 20
+                                        };
+        var a2 = document.getElementById('area2');
+
+        a2.innerHTML += "name 속성이 있나요? : " + obj.hasOwnProperty('name') + "<br>";
+        a2.innerHTML += "age 속성이 있나요? : " + obj.hasOwnProperty('age') + "<br>";
+        a2.innerHTML += "hobby 속성이 있나요? : " + obj.hasOwnProperty('hobby') + "<br>";
+
+        };
+    </script>
+
+    <h3>toString() : </h3>
+    <p>특정 객체의 내용을 문자열로 바꾸어 표현하는 함수</p>
+
+    <button onclick="test3();">실행 확인</button>
+    <div id="area3"></div>
+
+    <script>
+        function test3(){
+            var product = {
+                name : '겜돌이',
+                brand : 'ASUS',
+                price : 750000,
+                toString : function(){
+                    return '제 노트북은 ' + this.name + '이며, ' + this.brand + '회사꺼구요, ' + this.price + '원 입니다.';
+                }
+            };
+            console.log(product);
+            console.log(product.toString());
+
+            var a3 = document.getElementById('area3');
+            a3.innerHTML += product + "<br>";
+            a3.innerHTML += product.toString() + "<br>";
+        };
+    </script>
+
+    <h3>constructor : </h3>
+    <p>Object가 가지는 기본 생성자로, 각 객체의 자료형 비교 시 사용된다.</p>
+
+    <button onclick="test4();">실행 확인</button>
+    <div id="area4"></div>
+
+    <script>
+        function test4(){
+            var num1 = 100;
+            var num2 = '100';
+
+            console.log("num1 : " + num1);
+            console.log("num2 : "+ num2);
+            console.log("num1의 자료형 : " + typeof(num1));
+            console.log("num2의 자료형 : " + typeof(num2));
+
+            var a4 = document.getElementById('area4');
+
+            a4.innerHTML += 'typeof(num1) 이 number인가요 ?' + (typeof(num1) == 'number') + "<br>";
+            a4.innerHTML += 'typeof(num2) 이 number인가요 ?' + (typeof(num2) == 'number') + "<br>";
+            
+            // 두 대상의 값에 대한 자료형을 판단할 때 constructor를 사용할 수 있다.
+            a4.innerHTML += 'num1은 숫자?' + (num1.constructor == Number) + "<br>";
+            a4.innerHTML += 'num2은 숫자?' + (num2.constructor == Number) + "<br>";
+            a4.innerHTML += 'num2은 문자?' + (num2.constructor == String) + "<br>";
+        }
+    </script>
+
+    <hr>
+
+    <h3>Date 객체</h3>
+    <P>날짜를 관리하는 객체</P>
+    <button onclick="test5();">실행 확인</button>
+
+    <div id="area5"></div>
+
+    <script>
+        function test5(){
+            var a5 = document.getElementById('area5');
+
+            // 현재 시간
+            var date1 = new Date();
+
+            a5.innerHTML += "Date() : " + date1 + "<br>";
+
+            // 날짜 명을 적어서 시간으로 변경하기
+            var date2 = new Date('October 31');
+            var date3 = new Date('October 31, 2002');
+            var date4 = new Date('October 31, 2002 14:20:00');
+
+            a5.innerHTML += "Date('October 31') : " + date2 + "<br>";
+            a5.innerHTML += "Date('October 31, 2002') : " + date3 + "<br>";
+            a5.innerHTML += "Date('October 31, 2002 14:20:00') : " + date4 + "<br>";
+
+            // 그냥 시간 적기
+            // (단, 월은 0부터 시작하기 때문에 하나 적게 표기해야 한다.)
+            var date5 = new Date(2019,9,31);
+            var date6 = new Date(2019,11,25,12,01,01);
+            a5.innerHTML += "Date(2019,9,31) : " + date5 + "<br>";
+            a5.innerHTML += "Date(2019,11,25,12,01,01) : " + date6 + "<br>";
+        }
+    </script>
+
+    <h3>Date 객체의 함수</h3>
+    <button onclick="test6();">실행 확인</button>
+    <div id="area6"></div>
+
+    <script>
+        function test6(){
+            var date = new Date();
+            var a6 = document.getElementById('area6');
+            with(date){
+                a6.innerHTML += "getFullYear() : " + getFullYear() + "<br>";
+                a6.innerHTML += "getMonth() : " + getMonth() + "<br>";
+                a6.innerHTML += "getDate() : " + getDate() + "<br>";
+                a6.innerHTML += "getHours() : " + getHours() + "<br>";
+                a6.innerHTML += "getMinutes() : " + getMinutes() + "<br>";
+                a6.innerHTML += "getSeconds() : " + getSeconds() + "<br>";
+                a6.innerHTML += "getMilliseconds() : " + getMilliseconds() + "<br>";
+                a6.innerHTML += "getTime() : " + getTime() + "<br>";
+            }
+
+            var date2 = new Date(new Date(2019,7,16,09,00).getTime());
+
+            console.log(date2)
+
+            // 날짜 사이 간격 구하기
+            var now = new Date();
+            var interval = now.getTime() - date2.getTime();
+            interval = Math.floor(interval/(1000 * 60 * 60 * 24));
+
+            alert("우리가 함께한 날 : " + interval);
+        }
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

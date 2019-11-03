@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>문단 관련 스타일</title>
+      
+        <style>
+        /* direction 속성 */
+        #p1{direction: ltr;}
+        #p2{direction: rtl;}
+
+        /* text-align */
+        #align1{text-align: left;}
+        #align2{text-align: center;}
+        #align3{text-align: right;}
+
+        </style>
+    </head>
+    <body>
+        <h1>문단 관련 스타일</h1>
+        
+        <hr>
+
+        <h3>direction : 글자 쓰기 방향을 설정(정렬)</h3>
+        <pre>선택자 {direction : ltr | rtl ;}</pre>
+        <h4>왼쪽에서 오른쪽으로 ...</h4>
+        <p id="p1">
+            호빵, 팥죽, 수제비, 방어, 계란빵
+        </p>
+
+        <h4>오른쪽에서 왼쪽으로...</h4>
+        <p id="p2">
+            호빵, 팥죽, 수제비, 방어, 계란빵
+        </p>
+
+        <hr>
+
+        <h3>문단 정렬하기</h3>
+        <pre>선택자 { text-align : left | right | center ;}</pre>
+
+        <h4>왼쪽 정렬</h4>
+        <p id="align1">Elephant in the room</p>
+        
+        <h4>가운데 정렬</h4>
+        <p id="align2">Elephant in the room</p>
+
+        <h4>오른쪽 정렬</h4>
+        <p id="align3">Elephant in the room</p>
+
+
+        <br>
+        <br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

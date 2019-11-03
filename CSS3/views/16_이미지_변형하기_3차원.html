@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>이미지 변형하기 3차원</title>
+        <style>
+            img{
+                border: 1px solid black;
+                width: 480px;
+                height: 480px;
+            }
+            #r2:active{
+                transform: perspective(300px) translateZ(40px);
+            }
+            #t1:active{
+                transform: perspective(400px) rotate3d(2, 2, -2, 30deg);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>이미지 변형하기 3차원</h1>
+        
+        <hr>
+
+        <h3>지정한 크기만큼 z축 이동하기</h3>
+        <img src="../resources/image/river2.PNG" alt="강2" id="r2">
+
+        <h3>3D 이미지 기울이기</h3>
+        <img src="../resources/image/제니.gif" alt="탑1" id="t1">
+
+        <br><br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

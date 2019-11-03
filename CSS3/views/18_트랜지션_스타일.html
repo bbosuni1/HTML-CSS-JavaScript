@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>트랜지션 스타일</title>
+        <style>
+            .t1{
+                width: 300px;
+                height: 300px;
+                background: black;
+                border: 1px solid black;
+                transition-duration: 1s;
+            }
+
+            .t1:hover{
+                background: url(../resources/image/제니.gif);
+                background-size:cover;
+                width: 500px;
+                height: 500px;
+                border: 3px solid green;
+            }
+            .t2{
+                overflow: hidden;
+                width: 200px;
+                height: 200px;
+                background: gold;
+                border: 3px solid silver;
+                transition-property: background-color, transform, width, height;
+                transition-duration: 2s, 5s, 1.5s, 2s;
+            }
+            .t2:hover{
+                width: 400px;
+                height: 400px;
+                background: url(../resources/image/리사.gif);
+                background-size: cover;
+                transform: rotateY(180deg);
+            }
+            .t3{
+                width: 200px;
+                height: 200px;
+                border: 2px solid silver;
+                background: ghostwhite;
+                transition-duration: 2s;
+                transition-timing-function: ease-in;
+            }
+            .t3:active{
+                background-image: url(../resources/image/리사2.gif);
+                background-size: cover;
+                background-position: center;
+                transform: rotateZ(180deg);
+                transform: translateX(50px);
+            }
+            .t4{
+                width: 100px;
+                height: 100px;
+                background: lightcoral;
+                border: 1px solid palevioletred;
+                transition-duration: 1s;
+                transition-delay: 2s;
+            }
+            .t4:hover{
+                background-image: url(../resources/image/제니2.gif);
+                background-size: cover;
+                background-position: center;
+                transform: rotateY(180deg);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>트랜지션 스타일</h1>
+        <hr>
+        <p>
+            시간이 지남에 따라 각각 다른 스타일을 구성하는 애니메이션 효과를 지닌 속성
+        </p>
+        <h3>트랜지션 진행 시간 설정하기</h3>
+        <div class="t1"></div>
+
+        <h3>트랜지션 스타일 별 세부 시간 설정하기</h3>
+        <div class="t2"></div>
+
+        <h3>트랜지션 진행 구간 별 속도 설정하기</h3>
+        <p>transition-timing-function : linear | ease | ease-in | ease-out ...</p>
+        <div class="t3"></div>
+
+        <h3>트랜지션 진행 딜레이 설정하기</h3>
+        <div class="t4"></div>
+        
+        <br><br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

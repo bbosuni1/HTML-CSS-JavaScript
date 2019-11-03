@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>이미지 변형하기 2차원</title>
+        <style>
+            .trans{
+                width: 250px;
+                height: 200px;
+            }
+            .t1:hover{
+                transform: translateX(50px);
+                -webkit-transform: translateX(50px);
+                -ms-transform: translateX(50px);
+                -o-transform: translateX(50px);
+                -moz-transform: translateX(50px);
+            }
+            .t2:active{
+                transform: translateY(50px);
+            }
+            .t3:active{
+                transform: translate(50px, -50px);
+            }
+            .t4:hover{
+                transform: scaleX(2);
+            }
+            .t5:hover{
+                transform: scaleY(2);
+            }
+            .f1:active{
+                transform: scale(2,2);
+            }
+            .c1:hover{
+                transform: rotate(45deg);
+            }
+            .r1:hover{
+                transform: skew(10deg, 10deg);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>이미지 변형하기</h1>
+        <p>
+            특정 요소를 가로, 세로 정보를 활용하여 이동시키거나 길이를 변형하는 것
+        </p>
+
+        <h3>이미지 좌우 이동</h3>
+        <img src="../resources/image/flower1.PNG" alt="꽃1" class="trans t1">
+
+        <h3>이미지 상하 이동</h3>
+        <img src="../resources/image/flower2.PNG" alt="꽃2" class="trans t2">
+
+        <h3>이미지 대각선 이동</h3>
+        <img src="../resources/image/flower3.PNG" alt="꽃3" class="trans t3">
+
+        <hr>
+
+        <h3>이미지 가로 확대</h3>
+        <img src="../resources/image/flower4.PNG" alt="꽃4" class="trans t4">
+
+        <h3>이미지 세로 확대</h3>
+        <img src="../resources/image/flower5.PNG" alt="꽃5" class="trans t5">
+
+        <h3>이미지 전체 확대</h3>
+        <img src="../resources/image/forest1.PNG" alt="숲1" class="trans f1">
+
+        <hr>
+
+        <h3>이미지 회전시키기</h3>
+        <img src="../resources/image/city1.PNG" alt="도시1" class="trans c1">
+
+        <h3>이미지 비틀기</h3>
+        <img src="../resources/image/river1.PNG" alt="강1" class="trans r1">
+
+        <br><br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

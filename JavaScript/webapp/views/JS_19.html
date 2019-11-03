@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>이벤트 관련 함수</title>
+    <style>
+        div{
+            width: 500px;
+            height: auto;
+            border: 3px solid black;
+            background: aquamarine;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트 관련 함수</h1>
+    <p>
+        이벤트 : 마우스 클릭, 키보드 입력 등과 같은 행동을 했을 때 <br>
+                해당 행동에 대한 효과, 결과, 반응을 이벤트라고 한다. <br>
+        - 고전 이벤트 모델 등록 방법 : 요소의 속성을 통해 이벤트를 직접 연결(바인드) <br>
+        - 인라인 이벤트 모델 등록 방법 : 요소를 HTML로 선언할 때 속성을 직접 작성하는 방법 <br>
+        - 표준 이벤트 모델 등록 방법 : 요소.addEventListener('이벤트명', 동작할 함수);
+    </p>
+
+    <h3>고전 이벤트 모델</h3>
+    <button id="btn1">test1() 실행</button>
+    <button id="btn2">test2() 실행</button>
+    <div id="area1"></div>
+
+    <script>
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var a1 = document.getElementById('area1');
+        // test1()
+        btn1.onclick = () => a1.innerHTML += "btn1이 클릭 되었습니다. <br>";
+        
+        // test2()
+        btn2.onclick = () => {
+        // 기존에 존재하던 이벤트를 null로 덮어 씌우면서 이벤트를 제거 할 수 있다.
+            btn1.onclick = null;
+
+            a1.innerHTML = "btn2가 클릭되면서 btn1의 이벤트를 제거했습니다.";
+        }
+    </script>
+
+    <h3>인라인 이벤트 등록하기</h3>
+    <button onclick="test3();">클릭 하세요.</button>
+    <script>
+        var count = 100;
+        
+        const test3 = () => {
+        
+            if(count > 0){
+                count--;
+                alert(count + " 번 남았습니다.");
+            }else alert("계약이 종료 되었습니다.");
+
+        };
+    </script>
+
+    <h3>표준 이벤트 등록하기</h3>
+    <p>이벤트 발생 객체를 전달 받아 해당 속성을 변경하는 방법</p>
+
+    <button id="btn3">실행 확인</button>
+    <div id="area2"></div>
+
+    <script>
+        const btn3 = document.getElementById('btn3');
+        const a2 = document.getElementById('area2');
+
+        // 이벤트리스너로 등록할 때에는 onclick 의 on을 뺀다.
+        btn3.addEventListener('click', function(element){
+            // 1. this. 를 통해 이벤트가 발생한 요소에 직접 접근할 수 있다.
+            this.style.width = "50";
+            this.style.height = "50";
+            this.style.backgroundColor = "greenyellow";
+            this.style.color = "crimson";
+            this.style.borderRadius = "50px";
+
+            // 2. 함수 선언 시 전달받은 element 요소로 사용하는 방법
+        for( var i in element){
+            a2.innerHTML += "el : " + element[i] + "<br>";
+        }
+        });
+    </script>
+
+    <h3>기본 이벤트 submit을 제거하고 유효성 검사하기</h3>
+    <p>
+        a태그는 클릭하면 다른 테이지로 이동한다. <br>
+        반면에 form 태그 안의 submit 버튼은 클릭 했을 때 <br>
+        입력 했던 form 안의 내용을 특정 페이지로 전달하고 해당 페이지로 새로고침한다.
+    </p>
+    <div>
+    <form id="memberJoin">
+        이름 : <input type="text" id="name"><br>
+        아이디 : <input type="text" id="userId"><br>
+        비밀번호 : <input type="password" id="userPwd"><br>
+        비밀번호 확인 : <input type="password" id="userPwdCheck"><br>
+
+        <input type="submit" value="제출하기" onclick="return test4();"> &nbsp;&nbsp;
+        <input type="reset" value="작성취소">
+    </form>
+    </div>
+
+    <script>
+        const test4 = () => {
+            let name = document.getElementById('name').value;
+            let userId = document.getElementById('userId').value;
+            let userPwd = document.getElementById('userPwd').value;
+            let userPwdCheck = document.getElementById('userPwdCheck').value;
+
+            // 유호성 검사
+            // 해당 값이 유효한지 (쓸 수 있는지, 효과가 있는지) 검사
+            // 1. 공란 X
+            // 2. 비밀번호 8자리 이상
+            // 3. 비밀번호 확인 일치
+            // . . .
+            
+            if(userId.length == 0){
+                alert("아이디를 입력하세요");
+            }else if(userPwd.length < 8){
+                alert("비밀번호는 8자리 이상 입니다.");
+            }else if(userPwd != userPwdCheck){
+                alert("비밀번호가 일치하지 않습니다.");
+            }else {alert("회원 가입 성공!");
+                return true;
+            }
+
+            // 제출 버튼이 클릭되어도 페이지 이동이 발생하지 않게 처리하려면 return false 를 적으면 된다.
+            // 이벤트(onclick) 의 함수에 return 을 적어준다.
+            return false;
+        }
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<!doctype html> <!-- 사용하는 HTML 버전 명시 -->
+<html>
+   <head>   <!-- 화면 제목, 문서의 전체 설정 -->
+       <title> Hello HTML5! </title>
+   </head>
+   <body>   <!-- 웹 문서로 표현할 내용을 담는 부분 -->
+       <h1> 안녕하세요. 세상님 </h1>
+   </body>
+</html>

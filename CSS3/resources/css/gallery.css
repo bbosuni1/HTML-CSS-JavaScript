@@ -1,0 +1,59 @@
+/*
+    이 파일은 KH 352반 학습용 파일입니다.
+    - 작성자 : 김동현
+*/
+/* 사진을 보여줄 갤러리 스타일 */
+
+#gallery{
+    border: 10px solid purple; /* 굵은 테두리 */
+    height: 300px;
+    width: 450px;
+    margin-left: auto; /* auto : 여백을 자동으로 준다 -> 가운데 정렬*/
+    margin-right: auto;
+    overflow: visible; /* 오버플로우일 경우 화면에 보여준다. */
+    background: violet;
+    box-shadow: purple 10px 10px 20px;
+}
+
+#gallery ul{
+    margin-left: -30px;
+}
+
+/* 갤러리 하나하나의 스타일 */
+#gallery ul li{
+    list-style-type: none;
+    display: inline-table; /* 정해진 모양에 맞는 테이블 모양으로 배치 */
+    padding: 10px;
+}
+
+/* 평소에 보일 작은 이미지 */
+.small{
+    width: 120px;
+    height: 80px;
+    
+}
+/* 큰 이미지 스타일 */
+.pic{
+    width: 300px;
+    height: 250px;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: -20px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 10px gray;
+    transition: 1s ease-out;
+}
+
+.small:hover{
+    cursor: pointer;
+}
+
+#gallery ul li:hover .pic{
+    width: 320px;
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    float: right;
+}

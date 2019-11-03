@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <title>폰트 관련 스타일</title>
+    <link href="https://fonts.googleapis.com/css?family=Gruppo&display=swap" rel="stylesheet">
+    <style>
+        /* font-family */
+        #ff-1 {font-family: "궁서체";} 
+        #ff-2 {font-family: "굴림체";}
+        #ff-3 {font-family: "배달의민족 기랑해랑" , "바탕체";}
+
+        /* 웹 폰트 사용하기 */
+        #web-font{font-family: "Gruppo", cursive;}
+
+        /* 폰트 크기 설정하기 */
+        #size1{font-size : 30px;}
+        #size2{font-size : 2em;}
+        #size3{font-size : 150%;}
+    
+        /* 폰트 굵기 */
+        #fw1{font-weight: bold;}
+        #fw2{font-weight: bolder;}
+        #fw3{font-weight: lighter;}
+
+        /* 폰트 대소문자 모양 변경 */
+        #fv{font-variant: small-caps;}
+
+        /* 폰트 기울이기 */
+        #fs1{font-style: normal;}
+        #fs2{font-style: italic;}
+        #fs3{font-style: oblique;}
+
+        /* 폰트 관련 한번에 설정하기 */
+        #f1{ font : italic bold 20px "고딕체";}
+        #f2{ font : normal bolder 30px "나눔손글씨 펜"}
+
+
+    </style>
+</head>
+<body>
+    <h1>폰트 관련 스타일</h1>
+    
+    <hr>
+
+    <h3>font-family 속성 : 문자열의 글꼴을 지정할 때 사용</h3>
+    <pre>선택자 { font=family : 글꼴 명 }</pre>
+    <p id="ff-1">딱따구리가 딱딱거리네.</p>
+    <p id="ff-2">예림이가 풀을 뜯어먹는다.</p>
+    <p id="ff-3">민방위때문에 못 옵니다.</p>
+
+    <h3>웹 폰트 사용하기</h3>
+    <p>
+        웹 폰트 예제 사이트 : <a href="http://fonts.google.com" target="_blank">구글 웹 폰트 사이트</a>
+    </p>
+    <p id="web-font">eternal sunshine of the spotless mind</p>
+
+    <hr>
+    <h3>글꼴의 크기를 스타일로 지정하기</h3>
+    <pre>선택자 {font-size : 크기;}</pre>
+
+    <ul>
+        <li id="size1">고정 크기 설정하기</li>
+        <li id="size2">가변 크기(em) 설정하기</li>
+        <li id="size3">가변 크기(%) 설정하기</li>
+    </ul>
+
+    <hr>
+
+    <h3>글꼵 굵기 설정하기</h3>
+    <pre>선택자 { font-weight : normal | blod | bolder | lighter }
+    </pre>
+
+    <ul>
+        <li id="fw1">[굵게] : 언젠가 너와 나 남이 되어도</li>
+        <li id="fw2">[더굵게] : 어딘선가 누군가에 무슨일이 생기면</li>
+        <li id="fw3">[가늘게] : 크으대 키어키 취이난 솨랑이</li>
+    </ul>
+
+    <h3>font-variant : 영대문자를 작게 표현</h3>
+    <pre>선택자{font-variant : 속성값;}</pre>
+    <P>[기본글꼴] WE WILL FIND A WAY. WE ALWAYS HAVE.</P>
+    <p id="fv">[변경글꼴] we will find a way. we always have.</p>
+    <p></p>
+
+    <hr>
+
+    <h3>font-style : 폰트의 기울기 설정</h3>
+    <pre>선택자 { font-style : normal | italic | oblique; }</pre>
+    <ul>
+        
+    </ul>
+        <li id="fs1">[기본] : 자 이제 시작이야 (내꿈을), 내 꿈을 위한 여행 (피카츄)</li>
+        <li id="fs2">[italic] : 자 이제 시작이야 (내꿈을), 내 꿈을 위한 여행 (피카츄)</li>
+        <li id="fs3">[oblique] : 자 이제 시작이야 (내꿈을), 내 꿈을 위한 여행 (피카츄)</li>
+    
+    <hr>
+
+    <h3>font : 폰트 관련 설정을 종합하여 한 번에 적용할 수 있다.</h3>
+    <pre>
+        선택자 {font : font-style
+                     font-variant
+                     font-weight
+                     font-size
+                     font-family            
+        }
+    </pre>
+
+    <p id="f1">태양처럼 빛을 내는 그대여</p>
+    <p id="f2">넌 나를 원해 넌 내게 빠져</p>
+
+    <br>
+    <br>
+    <a href="index.HTML">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <title>HTML 종합 실습문제 2</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>납품자 정보</legend>
+            
+            <ol>
+                <li><p><label>납품자명 : </label><input type="text" name="order" id="" placeholder="name"></p></li>
+                <li><p><label>email : </label><input type="email" name="email" id="" placeholder="answs@naver.com"></p></li>
+                <li><p><label>홈페이지 : </label><input type="url" name="homepage" id="" placeholder="https://" ></p></li>
+            </ol>
+        </fieldset>
+
+        <fieldset>
+            <legend>납품 정보</legend>
+            <ul>
+                <li><p><label>상품명 : </label><select name="productname" id="" style="width: 150px;">
+                    <option value="product1">상품1</option>
+                    <option value="product2">상품2</option>
+                </select></p></li>
+                <li><p><label>남품수량 : </label><input type="number" name="amount" id="" placeholder="최소100" min="100" step="10"></p></li>
+                <li><p><label>남풍등급 : </label><input type="range" name="grade" id="" min="1" max="5" step="1"></p></li>
+                <li><p><label>기타사항 : </label><textarea name="etc" id="" cols="30" rows="3"></textarea></p></li>
+            </ul>
+        </fieldset>
+
+        <br>
+        <input type="submit" value="send massage">
+    </form>
+
+
+
+    <br>
+    <br>
+    <a href="../views/index.html">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>애니메이션 스타일</title>
+        <style>
+        /* @keyframes으로 효과 만들기 */
+       
+        @keyframes trans1{
+            from{
+                background: black;
+            }to{
+                background:cyan;
+                border-radius: 50%;
+                transform: rotateY(360deg); 
+                border: 3px solid red;
+            }
+        }
+
+        /* 여러 효과 적용하기 */
+        @keyframes trans2{
+            0%{
+                background: chocolate;
+                border: 1px solid black;
+            }30%{
+                transform: translate(50px,50px);
+            }70%{
+                background: tomato;
+                transform: scale(2);
+                border: 3px solid beige;
+            }100%{
+                background-image: url(../resources/image/리사2.gif);
+                background-size:cover;
+                background-position: center;
+                transform: rotate(30deg);
+                border: 1px dotted black;
+            }
+        }
+        .test1{
+            border: 3px black solid;
+            margin: 100px;
+            width: 100px;
+            height: 100px;
+            background: black;
+            animation-name: trans1;
+            animation-duration: 2s;
+            animation-iteration-count: 10; /* 애니메이션 실행 횟수 */
+        }
+        .test2{
+            border: 3px black solid;
+            margin: 100px;
+            width: 100px;
+            height: 100px;
+            animation-name: trans2;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        Img{
+            margin-left: 100px;
+            width: 100px;
+            height: auto;
+            animation-name: trans1;
+            animation-duration: 5s;
+            animation-iteration-count: 10;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>애니메이션 스타일</h1>
+        <P>CSS3부터는 @ 형식의 특수한 속성들을 사용할 수 있게 되었다.</P>
+        <hr>
+
+        <h3>@keyframes 사용한 애니메이션 만들기</h3>
+        <div class="test1"></div>
+
+        <div class="test2"></div>
+
+        <img src="../resources/image/제니.gif" alt="제니1">
+
+        <br><br>
+        <a href="index.HTML">홈으로</a>
+    </body>
+</html>

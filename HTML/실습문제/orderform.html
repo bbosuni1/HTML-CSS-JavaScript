@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <title>html 종합 실습 문제</title>
+    <style>
+        @keyframes test{
+            0% { color : black;
+            }
+            50% { color : blue;
+            }
+            100% {
+                color : pink;
+            }
+        }
+        label {
+            animation-duration: 2s;
+            animation-name: test;
+        }
+    </style>
+</head>
+<body>
+    
+    <form>
+        <p><label>고객명 : </label><input type="text" name="user" required></p>
+        <p><label>전화번호 : </label><input type="text" name="phone" required></p>
+        <p><label>E-mail : </label><input type="email" name="email"></p>
+
+        <fieldset>
+            <legend>피자 사이즈</legend>
+            <!-- label for 기능 
+                    input의 id와 매칭 시켜주면 label의 택스트를 클릭해도 버튼을 활성화 시켜준다.
+            -->
+            <p><input type="radio" name="Size" value="Small" id="Small"><label for="Small">Small</label></p>
+            <p><input type="radio" name="Size" value="Medium"id="Medium"><label for="Medium">Medium</label></p>
+            <p><input type="radio" name="Size" value="Large" id="Large"><label for="Large">Large</label></p>
+        </fieldset>
+
+        <fieldset>
+            <legend>토핑 선택</legend>
+            <p><input type="checkbox" name="topping" value="bacon"><label for="">베이컨</label></p>
+            <p><input type="checkbox" name="topping" value="cheeze"><label for="">치즈</label></p>
+            <p><input type="checkbox" name="topping" value="onion"><label for="">양파</label></p>
+            <p><input type="checkbox" name="topping" value="mushroom"><label for="">버섯</label></p>
+        </fieldset>
+    
+        <p><label>희망 배송 시간 : </label><input type="time" name="배송시간"></p>
+        <p><label>배송시 요청사항 : </label><textarea name="요청사항" id="" cols="30" rows="5"></textarea></p>
+    
+        <input type="submit" value="주문하기">
+    </form>
+
+
+    <br>
+    <br>
+    <a href="../views/index.html">홈으로</a>
+</body>
+</html>

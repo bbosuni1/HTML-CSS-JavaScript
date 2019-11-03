@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM ( Document Object Model )</title>
+    <style>
+        body>div{
+            width: 800px;
+            height: auto;
+            border: 3px solid yellow;
+            padding: 10px;
+            background: lightgoldenrodyellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM ( Document Object Model )</h1>
+    <p>현재 화면에 보여주는 웹 문서를 다루는 객체</p>
+
+    <h3>글자가 담긴요소 생성하기</h3>
+    <button onclick="test1();">실행 확인</button>
+    <div id="area1"></div>
+
+    <script>
+        function test1(){
+            // 요소 생성하기(태그)
+            var element = document.createElement('h3');
+            // 노드 생성하기(태그 알맹이)
+            var textNode = document.createTextNode('텍스트 노드 생성');
+            // 노드와 요소 합치기
+            element.appendChild(textNode);
+
+            var a1 = document.getElementById('area1')
+            a1.appendChild(element);
+            
+        }
+    </script>
+
+    <h3>텍스트(문자열)가 아닌 노드 생성하기</h3>
+    <button onclick="test2();">실행 확인</button>
+    <div id="area2"></div>
+
+    <script>
+        const test2 = () => { var imageEl = document.createElement('img');
+
+        // img의 속성
+        imageEl.src = "https://post-phinf.pstatic.net/MjAxNzEyMjFfMjYg/MDAxNTEzODQ5NTUzOTk5.jtgdMwaZVXOS2ygGRE-LbAuhWErscidMXPFiLO1qhMAg.3CLYV96-_XGSS0iUEQCkG_DYKcncTlVNrvnc86hlv7Yg.GIF/image2.gif";
+        imageEl.width = 200;
+        imageEl.height = 300;
+        
+        // image 태그에서 존재하지 않는 속성은 추가할 수 없다.
+        imageEl.sleepyhead = 'KH';
+
+        // 없는 속성을 강제로 추가할 경우
+        imageEl.setAttribute('sleepyhead','kh');
+        
+        var a2 = document.getElementById('area2');
+        a2.appendChild(imageEl);
+        }
+    </script>
+
+    <h3>innerHTML</h3>
+    <button onclick="test3();">실행 확인</button>
+    <div id="area3">
+        <table id="board">
+            <thead>
+                <tr>
+                    <th>글 번호</th>
+                    <th>글 제목</th>
+                    <th>작성자</th>
+                    <th>조회수</th>
+                    <th>작성일자</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <script>
+        var boardNo = 1;
+
+        const test3 = () => { 
+            var board = document.getElementById('board');
+            var title = prompt("글 제목을 입력하세요.");
+            var writer = prompt("작성자 아이디");
+            var readCount = 10;
+            var writeDate = new Date();
+
+            board.innerHTML += "<tr>" + "<td>" + (boardNo++) + "</td>" 
+                                      + "<td>" + title + "</td>" 
+                                      + "<td>" + writer + "</td>"
+                                      + "<td>" + readCount + "</td>"
+                                      + "<td>" + writeDate.getFullYear() + "/" + writeDate.getMonth() + "/" + writeDate.getDate() + "/" + "</td>"
+                                      + "</tr>";
+        }
+    </script>
+
+    <h3>JS로 스타일 지정하기</h3>
+
+    <button onclick="test4();">실행 확인</button>
+    <div id="area4" style="height: 150px;"></div>
+
+    <script>
+        function test4(){
+            var a4 = document.getElementById('area4');
+
+            a4.style.backgroundColor = "green";
+            a4.style.borderRadius = "50px";
+            a4.style.transition = "all 3s";
+        }
+    </script>
+
+    <h3>노드 삭제하기</h3>
+    <button onclick="test5();">실행 확인</button>
+    <div id="area5"></div>
+    
+    <script>
+        function test5(){
+            document.getElementById('area5').remove();
+        }
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>
