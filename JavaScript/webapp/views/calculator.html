@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>계산기 만들기</title>
+    <style>
+        td {
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>계산기 만들기</h1>
+    <table border="1">
+        <tr>
+            <td colspan="4">
+                <input type="text" id="display">
+            </td>
+        </tr>
+        <tr>
+            <td onclick="cls_formula();">C</td>
+            <td>bs</td>
+            <td onclick="formula('%');">%</td>
+            <td onclick="formula('/');">/</td>
+        </tr>
+        <tr>
+            <td onclick="formula(7);">7</td>
+            <td onclick="formula(8);">8</td>
+            <td onclick="formula(9);">9</td>
+            <td onclick="formula('*');">X</td>
+        </tr>
+        <tr>
+            <td onclick="formula(4);">4</td>
+            <td onclick="formula(5);">5</td>
+            <td onclick="formula(6);">6</td>
+            <td onclick="formula('-');">-</td>
+        </tr>
+        <tr>
+            <td onclick="formula(1);">1</td>
+            <td onclick="formula(2);">2</td>
+            <td onclick="formula(3);">3</td>
+            <td onclick="formula('+');">+</td>
+        </tr>
+        <tr>
+            <td colspan="2" onclick="formula(0);">0</td>
+            <td onclick="formula('.');">.</td>
+            <td onclick="cul();">=</td>
+        </tr>
+    </table>
+
+    <script>
+        // 전역 변수
+        let display = document.getElementById('display');
+        let numberChk = false;  // 숫자 확인용
+        // let reg = /^[0-9 _]$/; // 처음 숫자 판별 정규식
+        let resultChk = true; // = 확인용
+
+        // onclick 함수식 만들기
+        function formula(a){
+            if(resultChk){
+                // 없음
+            }else{
+                cls_formula();
+                resultChk = true;
+                numberChk = true;
+                display.value += a;
+                return;
+            }
+
+            if(numberChk == false){ // 첫번째가 숫자가 아닐경우 
+                if(isNaN(a) == true){// 다음값도 숫자가 아닐경우 
+                    alert("연산자는 연속으로 나올 수 없습니다.");
+                }else{ // 숫자일 경우
+                    display.value += a;
+                }
+            }else{ // 첫번째가 숫자일 경우
+                display.value += a;
+            }
+            
+            // numberChk 초기화 용
+            if(isNaN(a) == true){ 
+                numberChk = false;
+            }else numberChk = true;
+        
+        }
+        // c버튼
+        function cls_formula(){
+            document.getElementById('display').value = "";
+        }
+        // 계산
+        function cul(){
+            // eval 함수 사용
+            // eval 함수
+            // eval('수식') 을 계산해서 결과로 돌려줌;
+            // ex) eval('1+2') = 3; 
+            // 수식이 완성되지 않으면 결과값을 주지 않는다. 오류가 뜸
+            //자바스크립트 에서도 try catch 가 가능!
+
+            try{document.getElementById('display').value = eval(display.value);}
+            catch(e){ alert("계산할 수 없습니다. 수식을 완성하세요")}
+
+            resultChk = false; 
+        }
+
+        //
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>
