@@ -1,6 +1,7 @@
 ﻿<html>
 <head>
 <title>Move Child</title>
+<script src="../../resources/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	/**
 	 * 대상 : div 내부 div
@@ -8,7 +9,8 @@
 	 * 함수 : appendTo()
 	 */
 	function run() {
-
+		$('#child').appendTo('#parent2');
+		// id=child 를 appenTo() 로 id=parent2 인 div 안으로 이동
 	}
 </script>
 

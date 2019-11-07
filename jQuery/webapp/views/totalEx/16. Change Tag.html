@@ -1,6 +1,7 @@
 ﻿<html>
 <head>
 <title>Change Tag</title>
+<script src="../../resources/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	/**
 	 * 대상 : div 내부 h2
@@ -8,7 +9,8 @@
 	 * 함수 : html(), replace()
 	 */
 	function run() {
-		
+		let txt = $('#target>h2').html().replace(/^[2]$/,'h3');
+		console.log(txt);
 	}
 </script>
 

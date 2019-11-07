@@ -1,6 +1,7 @@
 ﻿<html>
 <head>
 <title>Change Size</title>
+<script src="../../resources/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	/**
 	 * 대상 : div
@@ -8,7 +9,11 @@
 	 * 함수 : css() / width(), height()
 	 */
 	function run() {
-
+		// $('#target').css('transform', 'scale(2)')
+		$('#target').css({
+			width : '300px',
+			height : '200px'
+		})
 	}
 </script>
 

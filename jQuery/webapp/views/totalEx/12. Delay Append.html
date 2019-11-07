@@ -1,6 +1,7 @@
 ﻿<html>
 <head>
 <title>Delay Append</title>
+<script src="../../resources/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	/**
 	 * 대상 : div
@@ -8,7 +9,9 @@
 	 * 함수 : setTimeout(), append() or text() or html()
 	 */
 	function run() {
-		 
+		 setTimeout(() => {
+			$('#target').text('문자 추가');
+		 }, 1000);
 	}
 </script>
 

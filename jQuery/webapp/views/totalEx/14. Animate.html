@@ -1,6 +1,7 @@
 ﻿<html>
 <head>
 <title>Animate</title>
+<script src="../../resources/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	/**
 	 * 대상 : div
@@ -8,7 +9,10 @@
 	 * 함수 : animate(), width(), height()
 	 */
 	function run() {
-		
+		$('#target').animate({
+			width : '300px',
+			height : '200px'
+		},3000)
 	}
 </script>
 
