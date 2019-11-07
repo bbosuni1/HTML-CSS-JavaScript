@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery 입력 양식 필터 선택자</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <h1>jQuery 입력 양식 필터 선택자</h1>
+
+    <h3>select 와 option 태그상태에 대한 선택자</h3>
+
+    <select id="nation">
+        <option value="한국">한국</option>
+        <option value="중국">중국</option>
+        <option value="미국">미국</option>
+        <option value="영국">영국</option>
+        <option value="태국">태국</option>
+        <option value="남아프리카공화국">남아프리카공화국</option>
+        <option value="조선인민공화국">조선인민공화국</option>
+    </select>
+
+    선택한 국가 : <input type="text" id="result">
+
+    <script>
+        const selectNation = () => {
+            let value = $('option:selected').val();
+            
+            //console.log(value);
+
+            $('#result').val(value + '을 선택하셨습니다.');
+        }
+        // 웹 문서가 로드되자마자 즉성으로 함수 실행하기.
+        $(selectNation);
+        $('#nation').change(selectNation);
+    </script>
+
+    <h3>checkbox 상태 관련 선택자</h3>
+    헬스 종목 : 
+    <input type="checkbox" name="health" id="랫풀다운" value="랫풀다운">랫풋다운
+    <input type="checkbox" name="health" id="푸쉬업" value="푸쉬업">푸쉬업
+    <input type="checkbox" name="health" id="데드리프트" value="데드리프트">데드리프트
+
+    <script>
+        $('input:checkbox').change(changeCheckbox);
+        function changeCheckbox(){
+            // 운동 종목 선택 시 변경사항을 확인 할 수 있는 이벤트 만들기
+            // console.log($(this).prop('checked'));
+            if($(this).prop('checked')){
+                $(this).css({
+                    'width' : '50px',
+                    'height' : '50px'
+                });
+            }else{
+                $(this).css({
+                    'width' : '15px',
+                    'height' : '15px'
+                });
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h3>input 태그의 활성화 상태 관련 선택자</h3>
+    활성화 텍스트 박스 : <input type="text"> <br>
+    비활성화 텍스트 박스 : <input type="text" disabled> <br>
+    활성화 버튼 : <input type="button" value="활성화"> <br>
+    비활성화 버튼 : <input type="button" value="비활성화" disabled> <br>
+
+    <script>
+        $('input:enabled').css('background', 'green');
+        $('input:disabled').css('background', 'hotpink');
+    </script>
+    
+    <hr>
+
+    <h3>순서 관련 선택자</h3>
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>혈액형</th>
+            <th>취미</th>
+        </tr>
+        <tr>
+            <td>원준수</td>
+            <td>B형</td>
+            <td>숙면</td>
+        </tr>
+        <tr>
+            <td>박기연</td>
+            <td>A형</td>
+            <td>바느질</td>
+        </tr>
+        <tr>
+            <td>이연화</td>
+            <td>B형</td>
+            <td>일드감상</td>
+        </tr>
+        <tr>
+            <td>이응서</td>
+            <td>AB형</td>
+            <td>똘기부리기</td>
+        </tr>
+        <tr>
+            <td>유정현</td>
+            <td>A형</td>
+            <td>바느질</td>
+        </tr>
+        <tr>
+            <td colspan="2">총원 : </td>    
+            <td>5명</td>
+        </tr>
+    </table>
+
+    <script>
+        $('tr:odd').css('background', 'lightgray');
+        $('tr:even').css('background','yellow');
+        $('tr:first').css('background', 'lightgoldenrodyellow');
+        $('tr:last').css({
+            'backgorund' : 'black',
+            'color' : 'snow'
+        });
+    </script>
+
+    <hr>
+
+    <h3>함수 형태 선택자</h3>
+
+    <p>nth-child() : n번째 자식 요소 선택자</p>
+
+    <table id="tblTest">
+        <tr>
+            <th>이름</th>
+            <th>혈액형</th>
+            <th>취미</th>
+        </tr>
+        <tr>
+            <td>원준수</td>
+            <td>B형</td>
+            <td>숙면</td>
+        </tr>
+        <tr>
+            <td>박기연</td>
+            <td>A형</td>
+            <td>바느질</td>
+        </tr>
+        <tr>
+            <td>이연화</td>
+            <td>B형</td>
+            <td>일드감상</td>
+        </tr>
+        <tr>
+            <td>이응서</td>
+            <td>AB형</td>
+            <td>똘기부리기</td>
+        </tr>
+        <tr>
+            <td>유정현</td>
+            <td>A형</td>
+            <td>바느질</td>
+        </tr>
+        <tr>
+            <td colspan="2">총원 : </td>    
+            <td>5명</td>
+        </tr>
+    </table>
+
+    <script>
+        $(()=>{// onload
+            // n번째 자식 요소 선택자
+            $('#tblTest tr:eq(0)').css('background', 'lightgreen');
+
+            // n번 반복되는 요소 선택
+            $('#tblTest tr:nth-child(2n)').css('background', 'lightgray');
+            $('#tblTest tr:nth-child(3n)').css('background', 'green');
+
+            // 임의의 정수를 초과 / 미만인 요소 선택하기
+            $('#tblTest tr:gt(3)').css('font-size', '20px');
+            $('#tblTest tr:lt(2)').css('font-size', '10px');
+
+            // 특정 문자열을 포함하는 요소 선택하기
+            $('#tblTest tr:contains("A")').css('color','gold');
+            
+            // 선택자와 일치하지 않는 부정 선택자
+            $('#tblTest tr:not(:contains("A"))').css('color','wheat');
+
+        })
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

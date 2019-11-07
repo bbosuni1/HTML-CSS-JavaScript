@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery 필터링 메소드</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <style>
+        #silsub2{
+            width : 500px;
+            height: 500px;
+            padding: 15px;
+            border: 5px solid royalblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery 필터링 메소드</h1>
+        <p>
+            JS에서 기본적으로 지원하지 않는 <br>
+            필터를 직접 만들고자 할 때 사용할 수 있다.
+        </p>
+    
+    <hr>
+
+    <h4 class="test">Test - 0 -</h4>
+    <h4 class="test">Test - 1 -</h4>
+    <h4 class="test">Test - 2 -</h4>
+    <h4 class="test">Test - 3 -</h4>
+    <h4>Test - 4 -</h4>
+    <h4 class="test">Test - 5 -</h4>
+
+    <script>
+        $(()=>{
+            // filter() 메소드
+            $('h4').filter(':even').css({
+                background : 'orange',
+                color : 'navy'
+            });
+
+            // 함수를 매개변수로 활용 할 수 있다.
+            $('h4').filter((index)=>index%2 == 1).css({
+                background : 'red',
+                color : 'white'
+            });
+
+            // first() / last() / eq()
+            $('h4').first().css('font-size', '20pt');
+            $('h4').last().css('font-size', '5pt');
+            $('h4').eq(3).text('eq()로 선택한 이벤트 입니다.');
+
+            // 선택한 값과 반대되는 부정 선택 함수
+            $('h4').not('.test').css({
+                'background' : 'royalblue',
+                'color' : 'white'
+            })
+
+        });
+    </script>
+
+    <hr>
+
+    <h3>간단 실습3</h3>
+    <p>1) select 와 option을 사용하여 색상명을 선택한 뒤 <br> 
+        alert()으로 화면에 표시해 보시오. <br> 
+        단, id는 직접 정하고 옵션의 색상명은 영어로 작성하시오 <br>
+        2) alert()로 표시했던 색상명을 활용하여 select 변경 시 silsub2 div의 배경색 바꾸기
+    </p>
+    
+    <div id="silsub2">
+        <select name="color" id="colorChoice">
+            <option value="silver">silver</option>
+            <option value="gold">gold</option>
+            <option value="red">red</option>
+            <option value="yellow">yellow</option>
+        </select>
+    </div>
+
+    <script>
+        $('#colorChoice').change(myColorChooser);
+        
+        function myColorChooser(){
+            var cl = $('option:selected').val();
+            alert(cl);
+            $('#silsub2').css('background', cl);
+        }
+
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

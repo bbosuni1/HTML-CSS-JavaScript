@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery 이벤트 연결 관련 메소드</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <style>
+        .outer {
+            width: 200px;
+            height: 200px;
+            background : gray;
+            border: 5px solid black;
+            padding: 50px;
+        }
+        .inner {
+            width: 100%;
+            height: 100%;
+            background: lightgoldenrodyellow;
+            text-align: center;
+        }
+        .reverse {
+            background: black;
+            color : white;
+        }
+        .trg {
+            width: 150px;
+            height: 150px;
+            background: lightblue;
+            cursor: pointer;
+        } 
+        .increment {
+            width: 200px;
+            height: 50px;
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery 이벤트 연결 관련 메소드</h1>
+
+    <h3>마우스 연결 이벤트</h3>
+    
+    <p>
+        mouseenter : 이벤트 대상 요소에 마우스가 들어오면 발생 <br>
+        mouseleave : 이벤트 대상 요소에서 마우스가 떠나면 발생 <br>
+        mouseout : 이벤트 대상 요소에서 마우스가 벗어나면 발생 <br>
+        mouseover : 이벤트 대상 요소에 마우스가 존재하면 발생 <br>
+    </p>
+
+    <div class="outer">
+        <div class="inner">
+            inner div
+        </div>
+    </div>
+    
+    <script>
+        $(()=>{
+            $('.outer').on('mouseenter',function(){
+                console.log(">> Enter <<");
+                
+            }).on('mouseleave', function(){
+                console.log("<< Leave >>");
+            });
+            $('.outer').on('mouseout',function(){
+                console.log('~~ Out ~~');
+            });
+        });
+    </script>
+
+    <h3>hover() 이벤트</h3>
+    <p>
+        mouseenter 와 mouseleave를 함께 연결하는 이벤트
+    </p>
+
+    <h1 id="test1">hover test</h1>
+
+    <script>
+        $(()=>{
+            $('#test1').hover(function(){
+                $(this).addClass('reverse');
+            },function(){
+                $(this).removeClass('reverse');
+            })
+        }); 
+    </script>
+
+    <hr>
+
+    <h3>키보드 이벤트</h3>
+    <p>
+        keydown : 키가 눌렸을 때 <br>
+        keypress : 키가 눌려지고 있을때  <br>
+        keyup : 키에서 손을 땠을 때
+    </p>
+
+    <h4>키 이벤트 동작 확인하기</h4>
+    <input type="text" id="keytest">
+
+    <script>
+        $(()=>{
+            $('#keytest').on('keydown',function(){
+                var text = $(this).val();
+                console.log('keydown : ' + text);                
+            }).on('keypress',function(){
+                var text = $(this).val();
+                console.log('keypress : ' + text);
+            }).on('keyup', function(){
+                var text = $(this).val();
+                console.log('keyup : ' + text);
+            });
+        });
+    </script>
+
+    <h4>동적으로 글자 수 세기</h4>
+
+    <div>
+        <h1 id="counter">150</h1>
+        <textarea name="" id="" cols="70" rows="5"></textarea>
+    </div>
+
+    <script>
+        $(()=>{
+            $('textarea').keydown(function(){
+                var inputLength = $(this).val().length;
+                var remainLength = 150 - inputLength;
+
+                $('#counter').html(remainLength);
+
+                if(remainLength < 0){
+                    $('#counter').css('color', 'red');
+                }else{
+                    $('#counter').css('color', 'black');
+                }
+            })
+        });
+    </script>
+
+    <hr>
+
+    <h3>click 이벤트 + trigger() 함수</h3>
+    <p>
+        특정 이벤트가 발생했을 때 함께 연계되어 동작하는 함수
+    </p>
+    
+    <div class="trg" id="trg">
+        클릭 횟수 : <span>0</span>
+        <br>
+        (트리거)
+    </div>
+
+    <div class="increment" id="increment">저를 클릭하세요.</div>
+
+    <script>
+        let cnt = 0;
+        $('#increment').on('click',function(){
+            cnt++;
+            $('span').text(cnt);
+        });
+        $('#trg').on('click',function(){
+            $('#increment').trigger('click');
+        });
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery 개요</title>
+    <!-- 1. 직접 다운받아 연결하는 방법 -->
+    <!-- (Uncompressed : 개발자 전용) 
+        일반 js 파일 : 개발자나 사용자가 보기 쉽게 주석, 코드를 정렬하여 가시성(가독성)을 유지하는 방법
+        (Compressed : 배포 전용) 
+        min JS 파일 : 소스 코드에서 주석, 띄어쓰기, 구분자, 변수명을 최소화 및 간소화 하여 사용자에게 전달할 때
+        최소 한도의 데이터 전달로 효율을 높이는 파일 -->
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <!-- CDN 방식 :  -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+</head>
+<body>
+    <h1>jQuery 개요</h1>
+    <h3>jQuery 란?</h3>
+    <P>존 레식에 의해 개발된 JS 경량화 라이브러리로, <br>
+        복잡한 자바스크립트 구문을 짧고 쉽게 사용할 수 있도록 구현된 라이브러리이다. <br>
+        -- jQuery 사용 시 장점 -- <br>
+        1. DOM과 관련된 스크립트를 보다 쉽게 구현 가능 <br>
+        2. ajax (비동기 통신), 이벤트 처리를 폭 넓게 지원한다. <br>
+        3. jQuery 연결할 수 있는 확장형 플러그인, 오픈API를 <br>
+            다양하게 지원한다. (차트, 슬라이드, 애니메이션, 이펙트) <br>
+    </P>
+
+    <hr>
+
+    <h3>jQuery 연결하기</h3>
+    <p id="p1">
+        1. jQuery 홈페이지에서 JS 파일을 다운받아 연결하는 방법 <br>
+        2. CDN(Content Delivery Network)으로 파일 다운로드 없이 연결하는 방법
+    </p>
+    
+    <script>
+        // p1 아이디를 지닌 태그에 색 추가하기
+        // JS 였다면...
+        // document.getElementById('p1').style.backgroundColor = 'black';
+        // document.getElementById('p1').style.color = 'white';
+        
+        // JQuery 라면 ...
+        // $('#p1').css('background','black');
+        // $('#p1').css('color','white');
+        $('#p1').css({
+            'background' : 'black',
+            'color' : 'white'
+        });
+    </script>
+
+    <hr>
+
+    <h3>$('document').ready()</h3>
+
+    <p id="p2">
+        document.onload 와 같이 현재 웹 문서를 로드할 때 실행할 함수를 구현할 수 있다.
+    </p>
+
+    <script>
+        // document.onload = function() { . . .}
+
+        // 1차 원 형태
+        // jQuery(document).ready(()=>alert("안녕하세요, 제가 그 제이쿼리 입니다."))
+
+        // 축약 버전 1
+        // $(document).ready(()=>alert("축약 버전 1, jQuery 입니다."));
+        
+        // 최종 축약 jQuery 3버전 부터 가능.
+        $(()=>alert("최종 축약형, jQuery 입니다."));
+    </script>
+    
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

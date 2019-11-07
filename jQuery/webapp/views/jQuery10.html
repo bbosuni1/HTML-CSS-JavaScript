@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery 요소 추가 관련 메소드</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <style>
+        .item {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        #item1 {
+            background: mediumaquamarine;
+        }
+        #item2 {
+            background: paleturquoise;
+        }
+        #item3 {
+            background: palegoldenrod;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery 요소 추가 관련 메소드</h1>
+    
+    <h3>추가 메소드 part.1</h3>
+    <p>
+        $('A').appendTo(B) : A를 B요소 안의 마지막에 추가 <br>
+        $('A').prependTo(B) : A를 B요소 안의 앞에 추가 <br>
+        $('A').insertAfter(B) : A를 B요소 뒤에 추가 <br>
+        $('A').insertBefore(B) : A를 B요소 앞에 추가 <br>
+    </p>
+
+    <h1 id="test1"><label>|기준|</label></h1>
+    <h1 id="test2"><label>|기준|</label></h1>
+    <h1 id="test3"><label>|기준|</label></h1>
+    <h1 id="test4"><label>|기준|</label></h1>
+
+    <!-- <script>
+        $(function(){
+            const interval = setInterval(function(){
+                $('<label>appendTo()</label>').appendTo('#test1');
+                $('<label>prependTo()</label>').prependTo('#test2');
+                $('<label>insertAfter()</label>').insertAfter('#test3');
+                $('<label>insertBefore()</label>').insertBefore('#test4');
+
+                setTimeout(function(){
+                    clearInterval(interval);
+                }, 5000);
+
+            }, 1000);
+        });
+    </script> -->
+
+    <hr>
+
+    <h3>추가 메소드 part.2</h3>
+    <p>
+        $('A').append(B) : B를 A요소 안의 마지막 부분에 추가 <br>
+        $('A').prepend(B) : B를 A요소 안의 첫 부분에 추가 <br>
+        $('A').after(B) : B를 A요소 뒤에 추가 <br>
+        $('A').before(B) : B를 A요소 앞에 추가 <br>
+    </p>
+
+    <h1 id="test5"><label for="">|기준|</label></h1>
+    <h1 id="test6"><label for="">|기준|</label></h1>
+    <h1 id="test7"><label for="">|기준|</label></h1>
+    <h1 id="test8"><label for="">|기준|</label></h1>
+
+    <!-- <script>
+        $(function(){
+            const interval = setInterval(function(){
+
+                $('#test5').append('<label> append() </label>');
+                $('#test6').prepend('<label> prepend() </label>');
+                $('#test7').after('<label> after() </label>');
+                $('#test8').before('<label> before() </label>');
+
+                setTimeout(function(){
+                    clearInterval(interval);
+                }, 5000);
+            },1000);
+        });
+    </script> -->
+
+    <h3>객체(요소) 복사와 제거</h3>
+
+    <p>
+        clone() : 지정한 객체(요소)를 복사할 때 사용하는 함수 <br>
+        remove() / detach() / empty() : 지정한 객체 요소를 제거할 때 사용하는 함수 
+    </p>
+
+    <div id="cloneTest">
+        <div class="item" id="item1">
+            <button class="copy">복사버튼</button>
+            <button class="del">제거버튼</button>
+        </div>
+        <div class="item" id="item2">
+            <button class="copy">복사버튼</button>
+            <button class="del">제거버튼</button>
+        </div>
+        <div class="item" id="item3"> 
+            <button class="copy">복사버튼</button>
+            <button class="del">제거버튼</button>
+        </div>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        $(function(){
+            $('.copy').click(function(){
+                // clone() : 요소의 틀만 복사하는 함수
+                // 즉 함께 엮여있는 이벤트나 값을 같이 복사하지는 않는다.
+                // clone(true) : 요소의 모든 내용 복사
+                $(this).parent().clone(true).appendTo('#result');
+            });
+            $('.del').click(function(){
+                // remove() : 진짜 내용을 제거한다.
+                // $(this).parent().remove();
+
+                // detach() : 겉은 내용은 지우지만 실제 이벤트, 데이터는 남기는 함수
+                // $(this).parent().detach();
+
+                // empty() : 선택된 요소의 안을 비우는 함수
+                $(this).parent().empty();
+            });
+        });
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

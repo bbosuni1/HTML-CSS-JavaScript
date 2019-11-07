@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery 메소드</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <style>
+        .high_light_0 { background: gray;}
+        .high_light_1 { background: forestgreen;}
+        .high_light_2 { background: fuchsia;}
+        .high_light_3 { background: hotpink;}
+        .high_light_4 { background: khaki;}
+
+        div{
+            border: 3px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery 메소드</h1>
+
+    <h3>$.each() 메소드</h3>
+    <p>배열을 관리하는 for in 문을 메소드 형태로 제공하는 함수</p>
+    <p>
+        사용형식 : <br>
+        $().each(배열요소, function(index, item){. . .}); <br>
+        index : 반복 숫자 <br>
+        item : 반복 횟수에 해당하는 요소 하나
+    </p>
+
+    <div id="wrap1"></div>
+
+    <script>
+        $(()=>{
+            let arr = [
+                {name : '네이버', link : "https://www.naver.com"},
+                {name : '다음', link : "https://www.daum.net"},
+                {name : 'google', link : "https://www.google.com"},
+                {name : '웹쉐어', link : "http://192.168.20.223:9999"},
+                {name : '네이트', link : "https://www.nate.com"},
+            ];
+
+            $.each(arr, (index, item)=>{
+                var output = "";
+
+                output += "<a href=" + item.link + ">";
+                output += "<span>" + item.name + "</span>";
+                output += "</a> &nbsp;&nbsp;&nbsp;";
+
+                // console.log(output);
+
+                // html() : getter
+                // html(값) : setter               
+                $('#wrap1').html($('#wrap1').html() + output);
+
+            });
+        });
+    </script>
+
+    <h3>$('선택자').each() 메소드</h3>
+    <p>사용형식 : <br>
+        $('선택자').each(function(index,item){. . .}); <br>
+        만약 선택한 요소가 여러 개일 경우 하나씩 연달아 사용할 수 있도록 <br>
+        반복을 제공하는 함수이다. 선택자는 $.each()의 반복할 배열 역할을, <br>
+        안의 함수는 $.each()의 function과 동일하다.
+    </p>
+
+    <div id="wrap2">
+        <h1>test-0</h1>
+        <h1>test-1</h1>
+        <h1>test-2</h1>
+        <h1>test-3</h1>
+        <h1 id="test4">test-4</h1>
+    </div>
+    
+    <script>
+        $(()=>{
+            // console.log($('#wrap2').children());
+
+            $('#wrap2').children().each((index, item)=>{
+                // h1 태그에 class 속성 추가하기
+                $(item).addClass('high_light_' + index);
+                // 에로우평션이 아닐경우 item 대신 this 로 가능
+
+                // h1 태그에 class 제거하기
+                if( index == 2 ){
+                    $(item).removeClass('high_light_' + index);
+                }
+            });
+
+            // 찜하기 기능
+            $('#test4').click(function(){
+                $(this).toggleClass('high_light_4');
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>문서의 특정 요소 속성 판별 함수 : is()</h3>
+    <p>
+        매개인자로 전달받은 선택자가 현재 선택한 요소와 일치하는지 확인하는 함수
+    </p>
+
+    <div id="wrap3">
+        <h3 class="lunch">스팸</h3>
+        <h3>김치찌개</h3>
+        <h3 class="lunch">샌드위치</h3>
+        <h3>샐러드</h3>
+        <h3 class="lunch">등갈비</h3>
+    </div>
+
+    <script>
+        $(()=>{
+            $('#wrap3').children().each((index,item)=>{
+                // is()
+                // hasAttr() / hasClass()
+                if($(item).is('.lunch')){
+                    // lunch 라는 클래스가 있으면 true / 아니면 false
+                    $(item).css({
+                        background : 'red',
+                        color : 'orange'
+                    });
+                }
+
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>$.noConflict()</h3>
+    <p>다른 버전의 jQuery나 다른 라이브러리에서 $기호를 사용하며 <br>
+    현재 jQuery와 충돌이 발생할 경우 사용하는 함수</p>
+
+    <h1 id="testConflict"> noConflict 확인하기 </h1>
+
+    <script>
+        // let qque = $.noConflict();
+
+        // qque(function(){
+        //     qque('#testConflict').css('color', 'tomato');
+        // })
+    </script>
+    
+    <hr>
+    <div>
+        <a id="home" href="../index.html" style="width: 200px;"><img src="../resources/images/제니.gif" style="width: 200px;"></a>
+    </div> 
+    <script>
+        $('#home').hover(()=>{
+            $('#home').text("홈으로");
+        });
+    </script>
+    
+</body>
+</html>

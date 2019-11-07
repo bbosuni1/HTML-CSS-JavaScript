@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery 선택자</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <h1>jQuery 선택자</h1>
+    
+    <h3>기본 선택자</h3>
+
+    <h4>전체 선택자 : *</h4>
+    <script>
+        //$(()=>$('*').css('color','tomato'));
+    </script>
+
+    <h4>태그 선택자 : </h4>
+    <h5>존 레식</h5>
+    <P>jQuery 창시자</P>
+    <h5>존 시나</h5>
+    <p>프로레슬러</p>
+
+    <script>
+        // 하나의 태그를 선택할 때
+        $(()=>$('h5').css('color', 'yellow'));
+
+        // 여러 태그를 함께 선택할 떄
+        $(()=>$('h5, p').css('color', 'crimson'));
+    </script>
+
+    <h4>클래스 선택자 : </h4>
+    <h1 class="item">테스트 1</h1>
+    <h1 class="item selection">테스트 2</h1>
+    <h1 class="item">테스트 3</h1>
+
+    <script>
+        $(()=>{
+            // 하나의 클래스를 선택할 경우
+            $('.item').css('background', 'yellow');
+
+            // 두 개 이상의 클래스를 선택할 경우 둘다 가진 경우
+            $('.item.selection').css('color','purple');
+
+            // 여러 클래스 중 하나라도 가진 태그를 선택 할 경우
+            $('.item, .selection').css('border', '3px solid red');
+        });
+    </script>
+
+    <h4>아이디 선택자 : </h4>
+
+    <h1>팽귄</h1>
+    <h1 id="bear">곰</h1>
+    <h1>물개</h1>
+    <h1>토끼</h1>
+    <h1>고양이</h1>
+
+    <script>
+        $(()=>$('#bear').css('background', 'khaki'));
+    </script>
+
+    <hr>
+
+    <h3>간단 실습</h3>
+    <p>맥도날드씨의 농장에는 소가 다섯마리이다. 대부분의 소는 홀스타인이나 그 중 '음머'는 토종 한우이다 <br>
+    다음 중 다섯개의 li의 배경을 검은색으로, 글자를 흰색으로 하되, '음머'라는 소만 배경을 브라운으로 설정하시오<br>
+    </p>
+
+    <ul>
+        <li class="cow">홀</li>
+        <li class="cow" id="um">음머</li>
+        <li class="cow">스</li>
+        <li class="cow">타</li>
+        <li class="cow">인</li>
+    </ul>
+
+    <script>
+        $(()=>{$('.cow').css({
+            'background' : 'black',
+            'color' : 'white'
+        });
+        $('#um').css('background', 'brown');
+        });
+    </script>
+
+    <h3>자식 선택자와 후손 선택자 : </h3>
+    <div>
+        <ul>
+            <li>아몬드</li>
+            <li>
+                <h4>땅콩</h4>
+            </li>
+            <li>마카다미아</li>
+            <li>호두</li>
+            <li>피스타치오</li>
+        </ul>
+        <h4>Child - 브라질넛</h4>
+    </div>
+
+    <script>
+        // 자식 선택자
+        $(()=>$('div>h4').css('color', 'blue'));
+
+        // 후손 선택자
+        $(()=>$('div h4').css('background', 'lightcoral'));
+    </script>
+
+    <hr>
+
+    <h3>속성 선택자 : </h3>
+    <p>선택자[속성명] : 해당 속성을 가진 태그(요소)를 선택 <br>
+    선택자[속성명=속성값] : 해당 속성의 특정 값을 가진 요소 선택 <br>
+    선택자[속성명~=속성값] : 해당 속성의 값 중 특정 값이 있는 요소 선택 <br>
+    선택자[속성명$=속성값] : 속성 안의 값이 '속성값'으로 끝나는 요소 <br>
+    선택자[속성명*=속성값] : 속성의 값 중 특정 값을 포함하는 요소 선택</p>
+
+    <input type="text"> <br>
+    <input type="password" class="test test2"> <br>
+    <input type="radio"> <br>
+    <input type="checkbox" class="test2"> <br>
+    <input type="file">
+
+    <script>
+        $(()=>{
+            $('input[type=Text]').val('제이쿼리는 이렇게 글을 추가 합니다.');
+            $('input[class~=test]').val(1234);
+            $('input[type*=ra]').attr('checked', true);
+            $('input[type$=box]').prop('checked', true);
+    });
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

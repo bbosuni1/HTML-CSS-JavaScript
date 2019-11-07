@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <title>실습 2</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <script>
+        function checkBtn(){
+            $('[name=check]:checked').each(function(){
+                console.log($(this).val());
+            });
+        }
+    </script>
+    <style>
+        div{
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>실습 2</h1>
+    <input type="checkbox" name="check" value="1"> 1 번
+    <input type="checkbox" name="check" value="2"> 2 번
+    <input type="checkbox" name="check" value="3"> 3 번
+    <input type="checkbox" name="check" value="4"> 4 번
+    <br>
+    <input type="button" value="체크 버튼 확인" onclick="checkBtn();">
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

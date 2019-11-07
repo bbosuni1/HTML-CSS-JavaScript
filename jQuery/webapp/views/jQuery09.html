@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <title>태그 관련 메소드</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <h1>태그 관련 메소드</h1>
+    <h3>html()</h3>
+    <p>
+        선택된 요소의 내용부분을 꺼내오거나 수정할 때 사용. <br>
+        안에 작성된 내용을 html로 인식함.
+    </p>
+
+    <h1 id="t1"><a>네이</a></h1>
+    <h1 id="t2"></h1>
+    
+    <script>
+        $(function(){
+            let tmp = $('#t1').html();
+            console.log(tmp);
+
+            $('#t2').html(tmp).children('a').attr('href', 'https://www.naver.com');
+
+        });
+    </script>
+
+    <h3>text()</h3>
+    <p>
+        선택된 요소의 내용을 가져오거나 수정함. <br>
+        html() 함수와 다르게 태그 속성을 무시하고 문자열만 가져옴.
+    </p>
+
+    <h1 id="t3"><a>구이</a></h1>
+    <h1 id="t4"></h1>
+
+    <script>
+        $(function(){
+            let tmp = $('#t3').text();
+            console.log(tmp);
+
+            $('#t4').text(tmp);
+        });
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery 시각적 효과 적용</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <style>
+        .menu {
+            width: 500px;
+            height: 100px;
+            background: lightgrey;
+            text-align: center;
+            cursor: pointer;
+        }
+        .content {
+            width: 500px;
+            height: 200px;
+            background: lightpink;
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery 시각적 효과 적용</h1>
+    <h3>show(), hide()</h3>
+
+    <button id="showImg">사진 보여주기</button>
+    <button id="hideImg">사진 숨기기</button> <br>
+
+    <img src="../resources/images/강사님.jpeg">
+
+    <script>
+        $(()=>{
+            $('#showImg').on('click', function(){
+                $('img:first').show();
+            });
+            $('#hideImg').on('click',function(){
+                $('img:first').hide();
+            });
+        });
+    </script>
+
+    <h3>toggle() : show()와 hide()를 번갈아 실해시키는 함수</h3>
+
+    <button id="toggleImg">토글 확인</button>
+    <br>
+    <img src="../resources/images/아이유.jpg" id="iu">
+
+    <script>
+        $(()=>{
+            $('#toggleImg').on('click',function(){
+                $('#iu').toggle(1000, function(){
+                    alert('토글 실행 완료!');
+                });
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>slideDown() / slideUp() 함수</h3>
+
+    <div class="menu">자바와 자바스크립트 무엇을 포기할까요?</div>
+    <pre class="content">아직 익숙하지 않아서 그렇습니다.</pre>
+    <div class="menu">어떻게 이별까지 사랑하겠어, 널 사랑하는 거지</div>
+    <pre class="content">
+    일부러 몇 발자국 물러나
+    내가 없이 혼자 걷는 널 바라본다
+    옆자리 허전한 너의 풍경
+    흑백 거리 가운데 넌 뒤돌아본다
+             
+    그때 알게 되었어
+    난 널 떠날 수 없단 걸
+    우리 사이에 그 어떤 힘든 일도
+    이별보단 버틸 수 있는 것들이었죠</pre>
+    <div class="menu">Love Poem</div>
+    <pre class="content">
+    누구를 위해 누군가 
+    기도하고 있나 봐
+    
+    숨죽여 쓴 사랑시가
+    낮게 들리는 듯해
+    
+    너에게로 선명히 날아가
+    늦지 않게 자리에 닿기를</pre>
+    <div class="menu">불티</div>
+    <pre class="content">
+    불어 후후
+    빨간 불티야
+    내 마음도 너 같아
+    타오를 듯 위험한
+    살포시 널 눌러
+    덮으려 해 봐도
+    꺼지지 않는 너를
+    어떻게 해야 하나
+            </pre>
+    <div class="menu">워커 홀릭</div>
+    <pre class="content">
+    머릴 질끈 묶고 안경을 벗어던져
+    난 지금 화가 났음 짜증이 났음
+    답장을 해주고 싶다가도 쏘아대는 말투들이
+    전혀 사랑스럽지 않아
+    </pre>
+
+    <script>
+        $(()=>{
+            $('.menu').on('click',function(){
+                $(this).next('pre').slideToggle(1000,function(){
+                    alert('slide 실행 완료.')
+                });
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>fadeIn() / fadeOut()</h3>
+
+    <button id="btn1">fadeIn()</button>
+    <button id="btn2">fadeOut()</button>
+
+    <br>
+
+    <img src="../resources/images/제니.gif" id='jeny'>
+
+    <script>
+        $(()=>{
+            $('#btn1').on('click',function(){
+                $('#jeny').fadeIn(2000,function(){
+                    alert('fadeIn');
+                });
+            });
+            $('#btn2').on('click',function(){
+                $('#jeny').fadeOut(2000,function(){
+                    alert('fadeOut');
+                });
+            });  
+        });
+    </script>
+
+    <h3>fadeToggle()</h3>
+    <button id="btn3">fadeToggle()</button>
+    <br>
+    <img src="../resources/images/리사.gif" id="risa">
+    <script>
+        $(()=>{
+            $('#btn3').on('click',function(){
+                $('img:last').fadeToggle(2000,function(){
+                    alert('fadeToggle');
+                })
+            });
+        });
+    </script>
+    
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

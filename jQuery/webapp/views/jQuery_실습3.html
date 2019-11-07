@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+    <title>실습 3</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <script>
+        // function add(){   
+        //     var tr = '<tr>';
+        //     $('input:text').each(function(){
+        //         // $(this).val();
+        //         // '<td>'+$(this).val() +'</td>';
+        //         tr += '<td>'+$(this).val() +'</td>';
+        //     });
+            
+        //     tr += '</tr>';
+
+        //     $('table').append(tr);
+
+        // };
+
+        function add(){
+            // console.log($('[name=title]').val())
+            // $('A').appendTo(B) : A를 B요소 안의 마지막에 추가 <br>
+            $('<tr><td>'+$('[name=title]').val()+'</td>'+'<td>'+$('[name=content]').val()+'</td>'+'<td>'+$('[name=owner]').val()+'</td></tr>').appendTo('table');
+        };
+
+        function addFile() {
+            $('[type=file]').last().clone().appendTo('#div2');
+        };
+
+        function delFile() {
+            if($('[type=file]').length > 1){
+                $('[type=file]').last().detach();
+            }
+        };
+
+    </script>
+    <style>
+        table {
+            border: 3px solid gold;
+        }
+        div {
+            width: 500px;
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>실습 3-1</h1>
+    제목 : <input type="text" name="title"> <br>
+    내용 : <input type="text" name="content"> <br>
+    작성자 : <input type="text" name="owner"> <br>
+    <input type="button" value="테이블에 추가" onclick="add();">
+    <table border="1">
+        <tr>
+            <td>제목</td>
+            <td>내용</td>
+            <td>작성자</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <div id="div2">
+        <input type="file">
+        <input type="button" value="추가" onclick="addFile();">
+        <input type="button" value="삭제" onclick="delFile();">
+    </div>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

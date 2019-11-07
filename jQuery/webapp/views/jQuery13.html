@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery 입력 양식 관련 이벤트</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <style>
+        #wrap {
+            margin: auto;
+            padding: 50px;
+            background: #f5f6f7;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery 입력 양식 관련 이벤트</h1>
+
+    <div id="wrap">
+        <h1 align="center">회원 가입 양식</h1>
+        <form action="./userEnroll.html">
+            <table align="center">
+                <tr>
+                    <td>이름 : </td>
+                    <td><input type="text" name="userName" id="userName"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="nameResult"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>아이디 : </td>
+                    <td>
+                        <input type="text" name="userId" id="userId"> &nbsp;
+                        &nbsp;&nbsp;
+                        <button type="button">중복확인</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="idResult"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호 : </td>
+                    <td>
+                        <input type="password" name="userPwd" id="userPwd">
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호 확인 : </td>
+                    <td>
+                        <input type="password" name="userPwdChk" id="userPwdChk">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label id="pwdResult"></label>
+                    </td>
+               </tr>
+               <tr>
+                   <td>이메일 : </td>
+                   <td>
+                       <input type="text" name="userEmail" id="userEmail">
+                       @
+                       <select name="" id="">
+                           <option> -- 선택하세요</option>
+                           <option value="gamil.com">gamil.com</option>
+                           <option value="naver.com">naver.com</option>
+                           <option value="nate.com">nate.com</option>
+                           <option value="hanmail.net">hanmail.net</option>
+                           <option value="yahoo.com">yahoo.com</option>
+                       </select>
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="2" align="center">
+                       <input type="submit" value="회원 가입하기">
+                       &nbsp;&nbsp;
+                       <input type="reset" value="작성 취소">
+                   </td>
+               </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        // 전역변수
+        // 폼 입력이 다 정상적으로 되었는지 확인용
+
+        $(()=>{
+            $('#userName').keyup(function(){
+                // 한글 이름 : (특수문자, 영어, 숫자) 불가
+                let reg = /^[가-힣]+$/;
+
+                if(reg.test($('#userName').val())){
+                    $('#nameResult').text("멋진 이름입니다.").css('color', 'palegreen');
+                }else{
+                    $('#nameResult').text("잘못된 이름입니다.").css('color', 'red');
+                    $('#userName').focus();
+                }
+            });
+
+            $('#userId').on('keyup', function(){
+                // 아이디 : 영문 소문자, 숫자 혼합 4~13 글자 사이
+                //          영문자로 시작해야 함.
+                //          숫자가 반드시 하나 이상
+                var reg1 = /^[a-z][a-z0-9]{3,12}$/;
+                var reg2 = /\d/g;
+
+                if(!reg1.test($('#userId').val())){
+                    $('#idResult').text("아이디는 반드시 영소문자와 숫자의 조합이어야 합니다.").css('color', 'red');
+                    
+                }else if(!reg2.test($('#userId').val())){
+                    $('#idResult').text("아이디는 포함되어야 합니다.").css('color', 'red');
+                 
+                }else{
+                    $('#idResult').text("멋진 아이디 입니다.").css('color', 'palegreen');
+                 
+                }
+
+            });
+            
+            $('#userPwd').on('keyup', function(){
+                // 비밀번호 : 8자 이상
+                // var reg = /^\w{8,}$/;
+
+                if($('#userPwd').val().length < 8){
+                    $('#pwdResult').text("비밀번호는 8자리 이상이여야 합니다.").css('color', 'red');
+               
+                }else{
+                    $('#pwdResult').text("");
+                
+                }
+            });
+
+            $('#userPwdChk').on('change', function(){
+                // 비밀번호 확인 : 비밀번호와 같아야 함
+                // change 값이 변했을때 확인
+                if($('#userPwd').val()== $('#userPwdChk').val()){
+                    $('#pwdResult').html('비밀번호 확인이 일치합니다.').css('color', 'palegreen');
+                
+                }else{
+                    $('#pwdResult').html('비밀번호가 일치하지 않습니다.').css('color', 'red');
+                    $('#userPwdChk').val('');
+                
+                }
+            });
+
+            // 폼에서 submit이 일어날 때
+            $('form').on('submit',function(){
+                var anwer = confirm('정말 이 내용으로 가입하시겠습니까?');
+                var chk = true;
+                
+                $('[id*=Result]').each(function(){
+                    console.log($(this));
+                    if($(this).css('color') == 'red' ||
+                      $(this).css('color') == 'rgb(255, 0, 0)' ||
+                      $(this).text().length == 0) {
+                        chk = false;
+                }
+            });
+                
+
+                if(chk == false){
+                    alert('입력한 내용을 확인해 보세요!');
+                    // event.preventDefault();
+                    // return;
+                    // false 일시 이벤트 동작을 막고 아래를 실행하지 않도록 return;
+                    anwer = false;
+                }
+
+                if(anwer==true){
+                    var userName = $('#userName').val();
+                    alert(userName+'님, 가입을 환영합니다.');
+                }else{
+                    alert('가입을 취소합니다.');
+                    // 기본 이벤트 동작을 강제 취소할 때 사용하는 함수 
+                    event.preventDefault();
+                }
+
+            });
+        });
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

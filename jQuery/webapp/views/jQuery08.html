@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<head>
+    <title>jQuery 속성 관련 메소드</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <h1>jQuery 속성 관련 메소드</h1>
+    <P>
+        웹 문서의 선택된 요소의 특정 속성을 알아내는데 사용하는 함수 <br>
+        $(선택자).attr('속성명') : 속성명의 값을 가져오는 getter <br>
+        $(선택자).attr('속성명', '속성값') : 해당 속성의 값을 지정한 값으로 변경하는 setter <br>
+    </P>
+
+    <img src="../resources/images/아이유.jpg" width="400px" height="300px">
+
+    <script>
+        $(()=>{
+            // attr('속성명')
+            let imagesAddr = $('img').attr('src');
+            console.log('이미지 주소 : ' + imagesAddr);
+
+            // attr('속성명', '속성값')
+            $('img').attr('src', '../resources/images/강사님.jpeg');
+
+            // 여러 개의 태그가 선택되었을 때 함수를 통해 각각의 값을 연속적으로 변경 할 수도 있다.
+            $('img').attr('src', function(index,attrName){
+                console.log(index + " : " + attrName);
+            });
+
+            // 한 요소에 여러 속성 적용하기
+            $('img').attr({
+                width : '150px',
+                height : '70px'
+            });
+
+            // 요소에 담긴 속성 값 제거하기
+            $('img').removeAttr('width').removeAttr('height');
+        });
+    </script>
+
+    <h3>prop()</h3>
+    <p>
+        만약 사용하는 속성의 값이 참, 거짓으로 판별되는 값이라면 prop()를 사용하자.
+    </p>
+
+    <input type="checkbox" class="check"> 키위
+    <input type="checkbox" class="check"> 쿼카
+    <input type="checkbox" class="check"> 라못
+    <button onclick="checkProp();">확인하기</button>
+
+    <script>
+        function checkProp(){
+            // 속성 값 중 disabled, checked, selected
+            // true 나 false 를 반환한다. 따라서 prop() 함수로 접근해야 한다.
+            $('.check').each(function(index){
+                if($(this).prop('checked')){
+                    console.log(index + $(this).prop('checked'));
+                }
+            });
+        }
+    </script>
+
+    <h3>css() 함수</h3>
+    <p>해당 요소의 스타일을 적용할 때 사용하는 함수</p>
+    <h1 class="first">test - 1 -</h1>
+    <h1 class="second">test - 2 -</h1>
+    <h1 class="third">test - 3 -</h1>
+
+    <script>
+        $(function(){
+            // css('속성명')
+            console.log($('.first').css('color'));
+
+            // css('속성명','값')
+            $('.first').css('color','lightcoral');
+
+            // 선택한 요소가 여러 개일 경우 각각 스타일 변경하기
+            $('h1').each(function(index, item){
+                $(this).css('color', 'royalblue');
+            });
+            
+            // css()로 여러 속성 스타일 변경하기
+            $('.third').css({
+                background : 'greenyellow',
+                color : 'red',
+                transition : 'all 2s'
+            });
+
+        });
+    </script>
+
+    <hr>
+    <div>
+        <a id="home" href="../index.html" style="width: 200px;"><img src="../resources/images/제니.gif" style="width: 200px;"></a>
+    </div>
+    <script>
+    $('#home').hover(()=>{
+        $('#home').text("홈으로");
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery Effect 함수</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <style>
+        #test1 {
+            width: 200px;
+            height: 200px;
+            background: lightsalmon;
+        }
+        .test2 {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery Effect 함수</h1>
+    <p>웹 페이지에 시각적 효과 적용하기</p>
+    <h3>animate() 함수</h3>
+
+    <div id="test1"></div>
+    <button id="btn1">실행확인</button>
+    
+    <script>
+        $(()=>{
+            $('#btn1').on('click', function(){
+                $('#test1').animate({
+                    width : '500px',
+                    opacity : '0.5'
+                }, 3000, function(){
+                    // 변화 완료 후 처리할 내용
+                    alert('에니메이션 실행 확인');
+                });
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>순차적 애니메이션</h3>
+
+    <button id="btn2">실행 확인</button>
+
+    <div class="test2"></div>
+    <div class="test2"></div>
+    <div class="test2"></div>
+    <div class="test2"></div>
+    <div class="test2"></div>
+    <div class="test2"></div>
+    <div class="test2"></div>
+    <div class="test2"></div>
+
+    <script>
+        $(()=>{
+            $('#btn2').on('click', function(){
+                $('.test2').each(function(i,t){
+                    $(this).delay(i * 1000).animate({left : 500}, 'slow');
+                });
+            });
+
+            $('.test2').on('click', function(){
+                var w = $(this).css('width');
+                var h = $(this).css('height');
+
+                $(this).animate({
+                    width : parseInt(w) + 50,
+                    height : parseInt(h) + 50,
+                    opacity : '0.3'
+                }, 'slow');
+            });
+        });
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

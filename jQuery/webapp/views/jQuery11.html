@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<head>
+    <title>jQuery 이벤트</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+    <style>
+        #test2, #test3 {
+            width: 150px;
+            height: 150px;
+            background: lightgreen;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery 이벤트</h1>
+    
+    <h3>이벤트 관련 속성</h3>
+    <p>이벤트 관련 속성 정보들은 자바 스크립트의 내장 객체 event를 통해 <br>
+    확인이 가능하다.</p>
+
+    <button onclick="checkEvent(event);">event 정보 확인</button>
+
+    <script>
+        checkEvent=(event)=>{
+            console.log(event);
+        }
+    </script>
+
+    <hr>
+
+    <h3>이벤트 연결 함수</h3>
+    <h4>
+        bind() : 현재 존재하는 요소(태그)와 이벤트를 엮어주는 함수 <br>
+        unbind() : 엮여있던 이벤트를 제거하는 함수
+    </h4>
+
+    <h1 id="test1">마우스를 올려 보세요</h1>
+
+    <script>
+        $(function(){   // document.onload
+                        // 웹 문서가 로드되자마자 바로(즉석으로) 실행되는 내용
+            // 이벤트 엮기(연결하기)
+            // JS : document.getElementById('test1')
+            $('#test1').bind('mouseenter' , function(){
+                $(this).css({
+                    background : 'yellow',
+                    color : 'navy'
+                });
+            }).bind('mouseleave', function(){
+                $(this).css({
+                    background : 'navy',
+                    color : 'white'
+                });
+            });
+
+            $('#test1').bind('click',function(){
+                $(this).unbind('mouseenter').unbind('mouseleave').css({
+                    background : 'palegreen',
+                    color : 'navy'
+                });
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h4>jQuery 3버전부터 bind/unbind 대신 on/off 함수로 대체되었다. <br>
+    on() : bind() 대신 이벤트를 요소와 엮어주는 함수 <br>
+    off() : unbind() 대신 요소에 엮여있던 이벤트를 제거하는 함수</h4>
+
+    <div id="test2">기본 상태</div>
+    
+    <script>
+        $(function(){
+            // $('#test2').on('click',function(){ . . .});
+            $('#test2').on({ // 객체형태로 여러가지 이벤트 가능
+                mouseenter : function(){
+                    $(this).css('background', 'tomato').text('mouseenter');
+                }, mouseleave : function(){
+                    $(this).css({
+                        background : 'gold',
+                        color : 'silver'
+                    }).text('mouseleave');
+                }, click : function(){
+                    $(this).off('mouseenter').off('mouseleave').css({
+                        background : 'lightgreen',
+                        color : 'black'
+                    }).text('off');
+                }
+            });
+        });
+    </script>
+        
+    <div id="test3">기본 상태</div>
+
+    <script>
+        $(function(){
+            let obj = {
+                name : '린백 pc방 전용 의자',
+                price : 150000,
+                date : '19/11/05',
+                status : 'false'
+            };
+
+            $('#test3').on('click', obj, function(event){ // obj를 함수 실행시 data로 들고옴
+                alert(
+                    '상품명 : ' + event.data.name + '\n'
+                    + '가격 : ' + event.data.price + '\n'
+                    + 'date : ' + event.data.date + '\n'
+                    + 'status : ' + event.data.status + '\n'
+                );
+            });
+        });
+    </script>
+
+    <hr>
+
+    <h3>글자 형식에 이벤트 연결하기</h3>
+
+    <div id="wrap">
+        <h2>댓글 번호</h2>
+    </div>
+
+    <script>
+        $(function(){
+            $('#wrap').on('click', function(){
+                let length = $('h2').length;
+                let targetHTML = $(this).html();
+
+                console.log('h2 갯수 : ' + length);
+                console.log('대상 HTML 코드' + targetHTML);
+                
+                $(this).append('<h2> 댓글 번호 - ' + length + '</h2>');
+            });
+        });
+    </script>
+
+    <hr>
+    <h4>one() 함수</h4>
+    <p>
+        일회용 이벤트 처리 함수
+    </p>
+
+    <h1 id="">일인 당 한 번만 누를 수 있습니다.</h1>
+    <button id="test4">일회용 이벤트</button>
+
+    <script>
+        $(function(){
+            $('#test4').one('click', function(){
+                alert('일회용 이벤트 발생 확인.');
+            });
+        });
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>

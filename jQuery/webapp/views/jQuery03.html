@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery 입력 양식 선택자</title>
+    <script src="../resources/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <h1>jQuery 입력 양식 선택자</h1>
+    <p>
+        input 태그 속성들은 type의 값에 따라 속성 선택자를 다양하게 사용할 수 있다.
+    </p>
+    텍스트 상자 : <input type="text"> <br>
+    버튼 : <input type="button" value="버튼"> <br>
+    체크박스 : <input type="checkbox" name="" id=""> <br>
+    파일 : <input type="file" name="" id=""> <br>
+    비밀번호 : <input type="password" placeholder="486" id=""> <br>
+    라디오 : <input type="radio" name="" id=""> <br>
+    전송 버튼 : <input type="submit" value="전송버튼"> <br>
+    전송 취소 : <input type="reset" value="전송취소">
+
+    <script>
+        $(()=>{
+            $('input:text').css('background' , 'yellow');
+
+            // attr() 해당 태그의 속성을 가져오거나 변경한다.
+            // attr('속성명') --> getter : 속성의 값을 가져온다.
+            // attr('속성명','속성값') --> setter : 속성의 값을 변경한다.
+            $('input:button').attr('value', '왕버튼');
+            $('input:button').css({
+                'width' : '50px',
+                'height' : '50px'
+            });
+            $('input:checkbox').mouseenter(function(){
+                $(this).css({
+                'width' : '50px',
+                'height' : '50px'
+                });
+             });
+
+             $('input:checkbox').mouseout(function(){
+                 $(this).css({
+                    'width' : '10px',
+                    'height' : '10px'
+                 });
+             });
+
+             $('input:file').css('background','gray');
+        });
+    </script>
+
+    <br><br>
+    <a href="../index.html">홈으로</a>
+</body>
+</html>
