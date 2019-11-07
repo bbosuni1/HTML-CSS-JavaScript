@@ -1,6 +1,7 @@
 ﻿<html>
 <head>
 <title>Uncheck CheckBox</title>
+<script src="../../resources/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	/**
 	 * 대상 : div 내부 CheckBox
@@ -8,7 +9,7 @@
 	 * 함수 : removeAttr() or attr()
 	 */
 	function run() {
-		
+		$('#div checkbox').removeAttr('checked');
 	}
 </script>
 
@@ -31,5 +32,8 @@
 			data-role="none">uncheck us!</label><br>
 	</div>
 	<input type="button" value="run" onclick="run()" />
+
+	<br><br>
+	<a href="./index2.html">홈으로</a>
 </body>
 </html>
