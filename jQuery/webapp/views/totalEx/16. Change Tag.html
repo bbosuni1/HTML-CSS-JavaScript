@@ -9,8 +9,8 @@
 	 * 함수 : html(), replace()
 	 */
 	function run() {
-		let txt = $('#target>h2').html().replace(/^[2]$/,'h3');
-		console.log(txt);
+		let txt = $('#target>h2').html().replace('h2','h3');
+		$('h2').html(txt);
 	}
 </script>
 
